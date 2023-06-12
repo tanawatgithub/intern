@@ -11,19 +11,78 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController org = TextEditingController();
-  TextEditingController name = TextEditingController();
-  TextEditingController password = TextEditingController();
+  final TextEditingController orgcon = TextEditingController();
+  final TextEditingController namecon = TextEditingController();
+  final TextEditingController passwordcon = TextEditingController();
+
+  void LoginPage(BuildContext context) {
+    String name = namecon.text.trim();
+    String password = passwordcon.text.trim();
+    String org = orgcon.text.trim();
+
+
+    if (name.isNotEmpty && password.isNotEmpty && org.isNotEmpty) {
+      // ทำการตรวจสอบข้อมูลผู้ใช้งาน
+      // ถ้าข้อมูลถูกต้องให้ไปยังหน้าถัดไป
+      if (name == 'admin' && password == 'password' && org == 'Zeen') {
+        // ข้อมูลถูกต้อง ไปยังหน้าถัดไป
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LoginHomePage(namecon.text,passwordcon.text,orgcon.text)),
+        );
+      } else {
+        // ข้อมูลไม่ถูกต้อง แสดงข้อความแจ้งเตือน
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('ผิดพลาด'),
+              content: Text('ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง'),
+              actions: [
+                TextButton(
+                  child: Text('ตกลง'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } else {
+      // ไม่ได้ป้อนข้อมูลผู้ใช้งาน
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('ผิดพลาด'),
+            content: Text('กรุณากรอกข้อมูลผู้ใช้งาน'),
+            actions: [
+              TextButton(
+                child: Text('ตกลง'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('เข้าสู่ระบบ')
+          title:  Text('เข้าสู่ระบบ')
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/BG.jpg'),
+            image: AssetImage('assets/images/bg.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -34,9 +93,9 @@ class _LoginPageState extends State<LoginPage> {
             TextField( //org
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.left,
-              controller: org,
+              controller: orgcon,
               keyboardType: TextInputType.name,
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'องค์กร',
                 icon: Icon(Icons.person),
@@ -45,9 +104,9 @@ class _LoginPageState extends State<LoginPage> {
             TextField( // user
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.left,
-              controller: name,
+              controller: namecon,
               keyboardType: TextInputType.name,
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'ผู้ใช้งาน',
                 icon: Icon(Icons.person),
@@ -56,22 +115,22 @@ class _LoginPageState extends State<LoginPage> {
             TextField( // password
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.left,
-              controller: password,
+              controller: passwordcon,
               keyboardType: TextInputType.phone,
               obscureText: true,
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'รหัสผ่าน',
                 icon: Icon(Icons.password),
               ),
             ),
-            const Padding(padding: EdgeInsets.all(10.0)),
+            const Padding(padding: EdgeInsets.all(16.0)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                    onPressed: ()=> Navigator.push(context,MaterialPageRoute(builder: (context)=> LoginHomePage(org.text,name.text,password.text))),
-                    child: const Text('Login')
+                    onPressed: ()=> LoginPage(context),
+                    child: Text('Login')
                 ),
               ],
             ),
