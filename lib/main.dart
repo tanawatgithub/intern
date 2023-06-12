@@ -14,6 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: TextTheme(
+          bodyText1: TextStyle(
+            fontFamily: 'Mali',
+          ),
+        ),
         primarySwatch: Colors.blue,
       ),
       home: LoginPage(),
