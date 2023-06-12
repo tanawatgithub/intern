@@ -147,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 20),
             Container(
-              child: Text('เข้าสู่ระบบด้วยระบบด้วย PIN',style: TextStyle(fontSize:10.0,fontFamily: 'Mali')),
+              child: Text('เข้าสู่ระบบด้วยระบบด้วย PI',style: TextStyle(fontSize:10.0,fontFamily: 'Mali')),
             ),
           ],
         ),
