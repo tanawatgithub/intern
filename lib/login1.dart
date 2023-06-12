@@ -67,90 +67,108 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/bg.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Stack(
+              children: [
+                Positioned(
+                  top: -250,
+                  right: 10,
+                  left: 10,
 
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/bg.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // SizedBox(height: 50),
-                Container(
-                  width: 300,
-                  height: 300,
-                  child: Image.asset('assets/images/Frame 2178.png'),
+                  child: Image.asset('assets/images/bg11.png'),
+                  // width: 200,
+                  // height: 200,
                 ),
-                SizedBox(width: 10),
-                Container(
-                  width: 250,
-                  child: TextField(
-                    style: Theme.of(context).textTheme.bodyText1,
-                    textAlign: TextAlign.left,
-                    controller: orgcon,
-                    keyboardType: TextInputType.name,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'องค์กร',
-                      icon: Icon(Icons.person),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: constraints.maxWidth * 0.6,
+                          height: constraints.maxHeight * 0.3,
+                          child: Image.asset('assets/images/Frame 2178.png'),
+                        ),
+                        SizedBox(width: 10),
+                        Container(
+                          width: constraints.maxWidth * 0.5,
+                          child: TextField(
+                            style: Theme.of(context).textTheme.bodyText1,
+                            textAlign: TextAlign.left,
+                            controller: orgcon,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'องค์กร',
+                              icon: Icon(Icons.person),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
+                    SizedBox(height: 10),
+                    Container(
+                      width: constraints.maxWidth * 0.5,
+                      child: TextField(
+                        style: Theme.of(context).textTheme.bodyText1,
+                        textAlign: TextAlign.left,
+                        controller: namecon,
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'ผู้ใช้งาน',
+                          icon: Icon(Icons.person),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      width: constraints.maxWidth * 0.5,
+                      child: TextField(
+                        style: Theme.of(context).textTheme.bodyText1,
+                        textAlign: TextAlign.left,
+                        controller: passwordcon,
+                        keyboardType: TextInputType.phone,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'รหัสผ่าน',
+                          icon: Icon(Icons.password),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () => login(context),
+                          child: Text('Login'),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      child: Text(
+                        'เข้าสู่ระบบด้วยระบบ PIN',
+                        style: TextStyle(fontSize: 10.0, fontFamily: 'Mali'),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-            SizedBox(height: 10),
-            Container(
-              width: 250,
-              child: TextField(
-                style: Theme.of(context).textTheme.bodyText1,
-                textAlign: TextAlign.left,
-                controller: namecon,
-                keyboardType: TextInputType.name,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'ผู้ใช้งาน',
-                  icon: Icon(Icons.person),
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            Container(
-              width: 250,
-              child: TextField(
-                style: Theme.of(context).textTheme.bodyText1,
-                textAlign: TextAlign.left,
-                controller: passwordcon,
-                keyboardType: TextInputType.phone,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'รหัสผ่าน',
-                  icon: Icon(Icons.password),
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () => login(context),
-                  child: Text('Login'),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Container(
-              child: Text('เข้าสู่ระบบด้วยระบบด้วย PI',style: TextStyle(fontSize:10.0,fontFamily: 'Mali')),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
