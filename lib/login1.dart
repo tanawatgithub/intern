@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Positioned(
                   top: -250,
-                  right: 10,
+                  right: 1,
                   left: 10,
 
                   child: Image.asset('assets/images/bg11.png'),
