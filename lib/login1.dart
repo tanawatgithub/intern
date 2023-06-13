@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
           return Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/bg.jpg'),
+                image: AssetImage('assets/images/bg123.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     width: 667,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color.fromRGBO(217, 217, 217, 1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
