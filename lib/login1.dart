@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                                   style: Theme
                                       .of(context)
                                       .textTheme
-                                      .bodyText1,
+                                      .bodyLarge,
                                   textAlign: TextAlign.left,
                                   controller: orgcon,
                                   keyboardType: TextInputType.name,
@@ -137,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                                 style: Theme
                                     .of(context)
                                     .textTheme
-                                    .bodyText1,
+                                    .bodyLarge,
                                 textAlign: TextAlign.left,
                                 controller: namecon,
                                 keyboardType: TextInputType.name,
@@ -158,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                                 style: Theme
                                     .of(context)
                                     .textTheme
-                                    .bodyText1,
+                                    .bodyLarge,
                                 textAlign: TextAlign.left,
                                 controller: passwordcon,
                                 keyboardType: TextInputType.phone,
@@ -200,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                         Container(
                           child: Text(
                             'เข้าสู่ระบบด้วยระบบ PIN',
-                            style: TextStyle(fontSize: 10.0, fontFamily: 'Kani'),
+                            style: TextStyle(fontSize: 10.0, fontFamily: 'Kanit'),
                           ),
                         ),
                       ],
