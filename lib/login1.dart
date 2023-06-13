@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                     labelText: 'องค์กร',
-                                    prefixIcon: Icon(Icons.home), // แก้ไขตรงนี้
+                                    prefixIcon: Icon(Icons.location_city_rounded), // แก้ไขตรงนี้
                                   ),
                                 ),
                               ),
@@ -179,12 +179,12 @@ class _LoginPageState extends State<LoginPage> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                  SizedBox(width: 9,height: 50,),
+                                  Text('เข้าสู่ระบบ'),
                                   Icon(
-                                    Icons.login,
+                                    Icons.arrow_forward_sharp,
                                     color: Colors.white,
                                   ),
-                                  SizedBox(width: 8),
-                                  Text('เข้าสู่ระบบ'),
                                 ],
                               ),
                             ),
