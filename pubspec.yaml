@@ -85,6 +85,13 @@ flutter:
         - asset: fonts/Mali-Medium.ttf
 #          style: italic
 
+    - family: Kanit
+      fonts:
+        - asset: fonts/Kanit-Bold.ttf
+        - asset: fonts/Kanit-Italic.ttf
+        - asset: fonts/Kanit-Medium.tff
+          style: italic
+
 #    - family: Schyler
 #      fonts:
 #        - asset: fonts/Schyler-Regular.ttf
