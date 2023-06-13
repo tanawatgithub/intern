@@ -103,7 +103,9 @@ class _LoginPageState extends State<LoginPage> {
                             Container(
                               width: constraints.maxWidth * 0.6,
                               height: constraints.maxHeight * 0.3,
-                              child: Image.asset('assets/images/login11.png'),
+                              child: Text(
+
+                              ),
                             ),
                             SizedBox(height: 10),
                             Padding(
@@ -129,41 +131,47 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
                         SizedBox(height: 10),
-                        Container(
-                          width: constraints.maxWidth * 0.5,
-                          child: TextField(
-                            style: Theme
-                                .of(context)
-                                .textTheme
-                                .bodyText1,
-                            textAlign: TextAlign.left,
-                            controller: namecon,
-                            keyboardType: TextInputType.name,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'ผู้ใช้งาน',
-                              prefixIcon: Icon(Icons.person), // แก้ไขตรงนี้
-                            ),
+                        Padding(
+                          padding:  EdgeInsets.symmetric(horizontal: 20),
+                          child: Container(
+                              width: 530,
+                              child: TextField(
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .bodyText1,
+                                textAlign: TextAlign.left,
+                                controller: namecon,
+                                keyboardType: TextInputType.name,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'ผู้ใช้งาน',
+                                  prefixIcon: Icon(Icons.person), // แก้ไขตรงนี้
+                                ),
+                              ),
                           ),
                         ),
                         SizedBox(height: 10),
-                        Container(
-                          width: constraints.maxWidth * 0.5,
-                          child: TextField(
-                            style: Theme
-                                .of(context)
-                                .textTheme
-                                .bodyText1,
-                            textAlign: TextAlign.left,
-                            controller: passwordcon,
-                            keyboardType: TextInputType.phone,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'รหัสผ่าน',
-                              prefixIcon: Icon(Icons.lock), // แก้ไขตรงนี้
+                        Padding(
+                          padding:  EdgeInsets.symmetric(horizontal: 20),
+                            child: Container(
+                              width: 530,
+                              child: TextField(
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .bodyText1,
+                                textAlign: TextAlign.left,
+                                controller: passwordcon,
+                                keyboardType: TextInputType.phone,
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'รหัสผ่าน',
+                                  prefixIcon: Icon(Icons.lock), // แก้ไขตรงนี้
+                                ),
+                              ),
                             ),
-                          ),
                         ),
                         SizedBox(height: 10),
                         Row(
