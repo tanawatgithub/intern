@@ -77,30 +77,56 @@ class _LoginPageState extends State<LoginPage> {
                 fit: BoxFit.cover,
               ),
             ),
-            child: Stack(
-              children: [
-                Positioned(
-                  top: -250,
-                  right: 10,
-                  left: 10,
-                  child: Image.asset('assets/images/bg11.png'),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+            child: ListView(
+              children: [Center(
+                child: Padding(
+                  padding:  EdgeInsets.symmetric(vertical: 60,horizontal: 20),
+                  child: Container(
+
+                    width: 667,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: constraints.maxWidth * 0.6,
-                          height: constraints.maxHeight * 0.3,
-                          child: Image.asset('assets/images/Frame 2178.png'),
-                        ),
-                        SizedBox(height: 10),
-                        Container(
-                          width: constraints.maxWidth * 0.6,
-                          height: constraints.maxHeight * 0.3,
-                          child: Image.asset('assets/images/login11.png'),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(
+                              width: constraints.maxWidth * 0.6,
+                              height: constraints.maxHeight * 0.3,
+                              child: Image.asset('assets/images/Frame 2178.png'),
+                            ),
+                            SizedBox(height: 10),
+                            Container(
+                              width: constraints.maxWidth * 0.6,
+                              height: constraints.maxHeight * 0.3,
+                              child: Image.asset('assets/images/login11.png'),
+                            ),
+                            SizedBox(height: 10),
+                            Padding(
+                              padding:  EdgeInsets.symmetric(horizontal: 20),
+                              child: Container(
+                                width: 530,
+                                child: TextField(
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .bodyText1,
+                                  textAlign: TextAlign.left,
+                                  controller: orgcon,
+                                  keyboardType: TextInputType.name,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'องค์กร',
+                                    prefixIcon: Icon(Icons.home), // แก้ไขตรงนี้
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         SizedBox(height: 10),
                         Container(
@@ -111,89 +137,71 @@ class _LoginPageState extends State<LoginPage> {
                                 .textTheme
                                 .bodyText1,
                             textAlign: TextAlign.left,
-                            controller: orgcon,
+                            controller: namecon,
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
-                              labelText: 'องค์กร',
-                              prefixIcon: Icon(Icons.home), // แก้ไขตรงนี้
+                              labelText: 'ผู้ใช้งาน',
+                              prefixIcon: Icon(Icons.person), // แก้ไขตรงนี้
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      width: constraints.maxWidth * 0.5,
-                      child: TextField(
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .bodyText1,
-                        textAlign: TextAlign.left,
-                        controller: namecon,
-                        keyboardType: TextInputType.name,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'ผู้ใช้งาน',
-                          prefixIcon: Icon(Icons.person), // แก้ไขตรงนี้
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      width: constraints.maxWidth * 0.5,
-                      child: TextField(
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .bodyText1,
-                        textAlign: TextAlign.left,
-                        controller: passwordcon,
-                        keyboardType: TextInputType.phone,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'รหัสผ่าน',
-                          prefixIcon: Icon(Icons.lock), // แก้ไขตรงนี้
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () => login(context),
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.orange,
-                            onPrimary: Colors.white,
-                            onSurface: Colors.orange,
+                        SizedBox(height: 10),
+                        Container(
+                          width: constraints.maxWidth * 0.5,
+                          child: TextField(
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .bodyText1,
+                            textAlign: TextAlign.left,
+                            controller: passwordcon,
+                            keyboardType: TextInputType.phone,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'รหัสผ่าน',
+                              prefixIcon: Icon(Icons.lock), // แก้ไขตรงนี้
+                            ),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.login,
-                                color: Colors.white,
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () => login(context),
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.orange,
+                                onPrimary: Colors.white,
+                                onSurface: Colors.orange,
                               ),
-                              SizedBox(width: 8),
-                              Text('เข้าสู่ระบบ'),
-                            ],
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.login,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(width: 8),
+                                  Text('เข้าสู่ระบบ'),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Text(
+                            'เข้าสู่ระบบด้วยระบบ PIN',
+                            style: TextStyle(fontSize: 10.0, fontFamily: 'Mali'),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
-                    Container(
-                      child: Text(
-                        'เข้าสู่ระบบด้วยระบบ PIN',
-                        style: TextStyle(fontSize: 10.0, fontFamily: 'Mali'),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ],
+              )],
             ),
           );
         },
