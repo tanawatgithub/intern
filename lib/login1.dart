@@ -194,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                         Container(
                           child: Text(
                             'เข้าสู่ระบบด้วยระบบ PIN',
-                            style: TextStyle(fontSize: 10.0, fontFamily: 'Mali'),
+                            style: TextStyle(fontSize: 10.0, fontFamily: 'Mal'),
                           ),
                         ),
                       ],
