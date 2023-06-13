@@ -101,8 +101,8 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(height: 10),
                             Container(
                               child: Text(
-                                'เข้าสู่ระบบ'
-                                    style
+                                'เข้าสู่ระบบ',
+                                    style: TextStyle(fontFamily: 'Kanit' , fontSize: 30 , color: Colors.orange)
                               ),
                             ),
                             SizedBox(height: 10),
