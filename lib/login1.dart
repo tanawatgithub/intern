@@ -82,7 +82,6 @@ class _LoginPageState extends State<LoginPage> {
                 child: Padding(
                   padding:  EdgeInsets.symmetric(vertical: 60,horizontal: 20),
                   child: Container(
-
                     width: 667,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(217, 217, 217, 1),
@@ -101,10 +100,9 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             SizedBox(height: 10),
                             Container(
-                              width: constraints.maxWidth * 0.6,
-                              height: constraints.maxHeight * 0.3,
                               child: Text(
-
+                                'เข้าสู่ระบบ'
+                                    style
                               ),
                             ),
                             SizedBox(height: 10),
@@ -202,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                         Container(
                           child: Text(
                             'เข้าสู่ระบบด้วยระบบ PIN',
-                            style: TextStyle(fontSize: 10.0, fontFamily: 'Kani'),
+                            style: TextStyle(fontSize: 10.0, fontFamily: 'Kanit'),
                           ),
                         ),
                       ],
