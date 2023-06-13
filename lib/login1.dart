@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Positioned(
                   top: -250,
-                  right: 1,
+                  right: 10,
                   left: 10,
 
                   child: Image.asset('assets/images/bg11.png'),
@@ -93,6 +93,12 @@ class _LoginPageState extends State<LoginPage> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
+                        Container(
+                          width: constraints.maxWidth * 0.6,
+                          height: constraints.maxHeight * 0.3,
+                          child: Image.asset('assets/images/login11.png'),
+                        ),
+                        SizedBox(width: 10),
                         Container(
                           width: constraints.maxWidth * 0.6,
                           height: constraints.maxHeight * 0.3,
