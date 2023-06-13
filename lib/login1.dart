@@ -22,7 +22,8 @@ class _LoginPageState extends State<LoginPage> {
       if (name == 'admin' && password == 'password' && org == 'Zeen') {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => LoginHomePage(namecon.text,passwordcon.text,orgcon.text)),
+          MaterialPageRoute(builder: (context) =>
+              LoginHomePage(namecon.text, passwordcon.text, orgcon.text)),
         );
       } else {
         showDialog(
@@ -82,10 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                   top: -250,
                   right: 10,
                   left: 10,
-
                   child: Image.asset('assets/images/bg11.png'),
-                  // width: 200,
-                  // height: 200,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -98,24 +96,27 @@ class _LoginPageState extends State<LoginPage> {
                           height: constraints.maxHeight * 0.3,
                           child: Image.asset('assets/images/Frame 2178.png'),
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(height: 10),
                         Container(
                           width: constraints.maxWidth * 0.6,
                           height: constraints.maxHeight * 0.3,
                           child: Image.asset('assets/images/login11.png'),
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(height: 10),
                         Container(
                           width: constraints.maxWidth * 0.5,
                           child: TextField(
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .bodyText1,
                             textAlign: TextAlign.left,
                             controller: orgcon,
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'องค์กร',
-                              icon: Icon(Icons.person),
+                              prefixIcon: Icon(Icons.home), // แก้ไขตรงนี้
                             ),
                           ),
                         ),
@@ -125,14 +126,17 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       width: constraints.maxWidth * 0.5,
                       child: TextField(
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .bodyText1,
                         textAlign: TextAlign.left,
                         controller: namecon,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'ผู้ใช้งาน',
-                          icon: Icon(Icons.person),
+                          prefixIcon: Icon(Icons.person), // แก้ไขตรงนี้
                         ),
                       ),
                     ),
@@ -140,7 +144,10 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       width: constraints.maxWidth * 0.5,
                       child: TextField(
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .bodyText1,
                         textAlign: TextAlign.left,
                         controller: passwordcon,
                         keyboardType: TextInputType.phone,
@@ -148,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'รหัสผ่าน',
-                          icon: Icon(Icons.password),
+                          prefixIcon: Icon(Icons.lock), // แก้ไขตรงนี้
                         ),
                       ),
                     ),
@@ -158,7 +165,22 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         ElevatedButton(
                           onPressed: () => login(context),
-                          child: Text('Login'),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.orange,
+                            onPrimary: Colors.white,
+                            onSurface: Colors.orange,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.login,
+                                color: Colors.white,
+                              ),
+                              SizedBox(width: 8),
+                              Text('เข้าสู่ระบบ'),
+                            ],
+                          ),
                         ),
                       ],
                     ),
