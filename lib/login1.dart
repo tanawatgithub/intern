@@ -255,7 +255,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           child: const Text(
                             'เข้าสู่ระบบด้วยระบบ PIN',
-                            style: TextStyle(fontFamily:'Kanit',fontSize: 16,color: Colors.red,decoration: TextDecoration.underline,),
+                            style: TextStyle(fontFamily:'Kani',fontSize: 16,color: Colors.red,decoration: TextDecoration.underline,),
                           ),
                         ),
                       ],
