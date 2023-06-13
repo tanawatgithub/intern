@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intern/loginpage1.dart';
 import 'package:intern/testp.dart';
+import 'package:intern/forgetpassword.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -258,6 +259,35 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                               ),
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => forpassword(),
+                                            ),
+                                          );
+                                        },
+                                        child: const Text(
+                                          'ลืมรหัสผ่าน / ปลดล็อค                   ',
+                                          style: TextStyle(
+                                            fontFamily: 'Kanit',
+                                            fontSize: 16,
+                                            color: Colors.orange,
+                                            decoration: TextDecoration.underline,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                               const SizedBox(height: 30),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -277,7 +307,7 @@ class _LoginPageState extends State<LoginPage> {
                                           width: 9,
                                           height: 50,
                                         ),
-                                        Text('เข้าสู่ระบบ'),
+                                        Text('เข้าสู่ระบบ',style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                                         Icon(
                                           Icons.arrow_forward_sharp,
                                           color: Colors.white,
@@ -300,13 +330,31 @@ class _LoginPageState extends State<LoginPage> {
                                 child: const Text(
                                   'เข้าสู่ระบบด้วยระบบ PIN',
                                   style: TextStyle(
-                                    fontFamily: 'Kani',
+                                    fontFamily: 'Kanit',
                                     fontSize: 16,
                                     color: Colors.red,
                                     decoration: TextDecoration.underline,
+
                                   ),
                                 ),
                               ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      const Text('version: 1.0.0.Beta    ',
+                                        style: TextStyle(
+                                          fontFamily: 'Kanit',
+                                          fontSize: 16,
+                                          color: Colors.orange,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              )
                             ],
                           ),
                         ],
