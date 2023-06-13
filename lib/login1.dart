@@ -14,6 +14,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController namecon = TextEditingController();
   final TextEditingController passwordcon = TextEditingController();
 
+  bool obscureText = true;
+
   void login(BuildContext context) {
     String name = namecon.text.trim();
     String password = passwordcon.text.trim();
@@ -84,9 +86,11 @@ class _LoginPageState extends State<LoginPage> {
                   padding:  const EdgeInsets.symmetric(vertical: 60,horizontal: 20),
                   child: Container(
                     width: 667,
+                    height: 835,
                     decoration: BoxDecoration(
-                      color: const Color.fromRGBO(217, 217, 217, 1),
-                      borderRadius: BorderRadius.circular(12),
+                      color: const Color.fromRGBO(255, 255, 255, 1),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.orange),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -174,42 +178,49 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10),
                         Padding(
-                          padding:  const EdgeInsets.symmetric(horizontal: 20),
-                            child: Container(
-                              width: 530,
-                              child: TextField(
-                                style: Theme
-                                    .of(context)
-                                    .textTheme
-                                    .bodyLarge,
-                                textAlign: TextAlign.left,
-                                controller: passwordcon,
-                                keyboardType: TextInputType.phone,
-                                obscureText: true,
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'รหัสผ่าน',
-                                  labelStyle: TextStyle(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Container(
+                            width: 530,
+                            child: TextField(
+                              style: Theme.of(context).textTheme.bodyLarge,
+                              textAlign: TextAlign.left,
+                              controller: passwordcon,
+                              keyboardType: TextInputType.phone,
+                              obscureText: obscureText,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'รหัสผ่าน',
+                                labelStyle: TextStyle(
+                                  color: Colors.orange,
+                                ),
+                                prefixIcon: Icon(Icons.lock,color: Colors.orange),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
                                     color: Colors.orange,
                                   ),
-                                  prefixIcon: Icon(Icons.lock,color: Colors.orange),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.orange,
-                                    ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.orange,
                                   ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.orange,
-                                    ),
+                                ),
+                                suffixIcon: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      obscureText = !obscureText;
+                                    });
+                                  },
+                                  child: Icon(
+                                    obscureText ? Icons.visibility_off : Icons.visibility,
                                   ),
                                 ),
                               ),
                             ),
+                          ),
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 30),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -244,7 +255,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           child: const Text(
                             'เข้าสู่ระบบด้วยระบบ PIN',
-                            style: TextStyle(fontSize: 16,color: Colors.red,decoration: TextDecoration.underline,),
+                            style: TextStyle(fontFamily:'Kanit',fontSize: 16,color: Colors.red,decoration: TextDecoration.underline,),
                           ),
                         ),
                       ],
