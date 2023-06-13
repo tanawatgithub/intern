@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intern/loginpage1.dart';
+import 'package:intern/testp.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({ Key? key }) : super(key: key);
@@ -71,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/bg123.png'),
                 fit: BoxFit.cover,
@@ -80,11 +81,11 @@ class _LoginPageState extends State<LoginPage> {
             child: ListView(
               children: [Center(
                 child: Padding(
-                  padding:  EdgeInsets.symmetric(vertical: 60,horizontal: 20),
+                  padding:  const EdgeInsets.symmetric(vertical: 60,horizontal: 20),
                   child: Container(
                     width: 667,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(217, 217, 217, 1),
+                      color: const Color.fromRGBO(217, 217, 217, 1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(
@@ -93,22 +94,20 @@ class _LoginPageState extends State<LoginPage> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
+                            SizedBox(
                               width: constraints.maxWidth * 0.6,
                               height: constraints.maxHeight * 0.3,
                               child: Image.asset('assets/images/Frame 2178.png'),
                             ),
-                            SizedBox(height: 10),
-                            Container(
-                              child: Text(
-                                'เข้าสู่ระบบ',
-                                    style: TextStyle(fontFamily: 'Kanit' , fontSize: 30 , color: Colors.orange)
+                            const SizedBox(height: 10),
+                              const Text(
+                                  'เข้าสู่ระบบ',
+                                  style: TextStyle(fontFamily: 'Kanit' , fontSize: 30 , color: Colors.orange),
                               ),
-                            ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Padding(
-                              padding:  EdgeInsets.symmetric(horizontal: 20),
-                              child: Container(
+                              padding:  const EdgeInsets.symmetric(horizontal: 20),
+                              child: SizedBox(
                                 width: 530,
                                 child: TextField(
                                   style: Theme
@@ -118,19 +117,32 @@ class _LoginPageState extends State<LoginPage> {
                                   textAlign: TextAlign.left,
                                   controller: orgcon,
                                   keyboardType: TextInputType.name,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     labelText: 'องค์กร',
-                                    prefixIcon: Icon(Icons.location_city_rounded), // แก้ไขตรงนี้
+                                    labelStyle: TextStyle(
+                                      color: Colors.orange,
+                                    ),
+                                    prefixIcon: Icon(Icons.location_city_rounded,color: Colors.orange),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.orange,
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.orange,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Padding(
-                          padding:  EdgeInsets.symmetric(horizontal: 20),
+                          padding:  const EdgeInsets.symmetric(horizontal: 20),
                           child: Container(
                               width: 530,
                               child: TextField(
@@ -141,17 +153,30 @@ class _LoginPageState extends State<LoginPage> {
                                 textAlign: TextAlign.left,
                                 controller: namecon,
                                 keyboardType: TextInputType.name,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
-                                  labelText: 'ผู้ใช้งาน',
-                                  prefixIcon: Icon(Icons.person), // แก้ไขตรงนี้
+                                  labelText: 'ชื่อผู้ใช้',
+                                  labelStyle: TextStyle(
+                                    color: Colors.orange,
+                                  ),
+                                  prefixIcon: Icon(Icons.person,color: Colors.orange),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.orange,
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.orange,
+                                    ),
+                                  ),
                                 ),
                               ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Padding(
-                          padding:  EdgeInsets.symmetric(horizontal: 20),
+                          padding:  const EdgeInsets.symmetric(horizontal: 20),
                             child: Container(
                               width: 530,
                               child: TextField(
@@ -163,15 +188,28 @@ class _LoginPageState extends State<LoginPage> {
                                 controller: passwordcon,
                                 keyboardType: TextInputType.phone,
                                 obscureText: true,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
                                   labelText: 'รหัสผ่าน',
-                                  prefixIcon: Icon(Icons.lock), // แก้ไขตรงนี้
+                                  labelStyle: TextStyle(
+                                    color: Colors.orange,
+                                  ),
+                                  prefixIcon: Icon(Icons.lock,color: Colors.orange),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.orange,
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.orange,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -184,7 +222,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                                children: const [
                                   SizedBox(width: 9,height: 50,),
                                   Text('เข้าสู่ระบบ'),
                                   Icon(
@@ -196,11 +234,17 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
-                        Container(
-                          child: Text(
+                        const SizedBox(height: 20),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => testp()),
+                            );
+                          },
+                          child: const Text(
                             'เข้าสู่ระบบด้วยระบบ PIN',
-                            style: TextStyle(fontSize: 10.0, fontFamily: 'Kanit'),
+                            style: TextStyle(fontSize: 16,color: Colors.red,decoration: TextDecoration.underline,),
                           ),
                         ),
                       ],
