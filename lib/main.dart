@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: TextTheme(
           bodyLarge: TextStyle(
-            fontFamily: 'Mali',
+            fontFamily: 'Mali' 'Kanit',
           ),
         ),
         primarySwatch: Colors.blue,

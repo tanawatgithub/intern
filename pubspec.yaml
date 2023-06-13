@@ -90,7 +90,7 @@ flutter:
         - asset: fonts/Kanit-Bold.ttf
         - asset: fonts/Kanit-Italic.ttf
         - asset: fonts/Kanit-Medium.tff
-          style: italic
+
 
 #    - family: Schyler
 #      fonts:
