@@ -89,8 +89,7 @@ flutter:
       fonts:
         - asset: fonts/Kanit-Bold.ttf
         - asset: fonts/Kanit-Italic.ttf
-        - asset: fonts/Kanit-Medium.tff
-
+        - asset: fonts/Kanit-Medium.ttf
 
 #    - family: Schyler
 #      fonts:
