@@ -96,13 +96,13 @@ class _LoginPageState extends State<LoginPage> {
                         Container(
                           width: constraints.maxWidth * 0.6,
                           height: constraints.maxHeight * 0.3,
-                          child: Image.asset('assets/images/login11.png'),
+                          child: Image.asset('assets/images/Frame 2178.png'),
                         ),
                         SizedBox(width: 10),
                         Container(
                           width: constraints.maxWidth * 0.6,
                           height: constraints.maxHeight * 0.3,
-                          child: Image.asset('assets/images/Frame 2178.png'),
+                          child: Image.asset('assets/images/login11.png'),
                         ),
                         SizedBox(width: 10),
                         Container(
