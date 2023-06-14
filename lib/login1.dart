@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
             return Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/bg123.png'),
+                  image: AssetImage('assets/images/bg1.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: BoxDecoration(
                           color: const Color.fromRGBO(255, 255, 255, 1),
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.orange),
+                          border: Border.all(color: Colors.red),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                                   width: constraints.maxWidth * 0.6,
                                   height: constraints.maxHeight * 0.3,
                                   child: Image.asset(
-                                    'assets/images/Frame 2178.png',
+                                    'assets/images/Zeenlogo.png',
                                   ),
                                 ),
                                 const SizedBox(height: 10),
@@ -339,7 +339,7 @@ class _LoginPageState extends State<LoginPage> {
                                   child: const Text(
                                     'เข้าสู่ระบบด้วยระบบ PIN',
                                     style: TextStyle(
-                                      fontFamily: 'Kani',
+                                      fontFamily: 'Kanit',
                                       fontSize: 16,
                                       color: Colors.red,
                                       decoration: TextDecoration.underline,

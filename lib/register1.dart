@@ -19,7 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           Navigator.pushReplacement(context, MaterialPageRoute(
-              builder: (context)=> const LoginHomePage('Pornphot','1234','org')));
+              builder: (context)=> const LoginHomePage('Pornphot','org','ice')));
         },
         tooltip: 'Previous Page',
         child: Icon(Icons.arrow_back),
