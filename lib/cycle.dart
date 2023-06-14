@@ -13,6 +13,7 @@ class _cyclepageState extends State<cyclepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Text('My Page'),
         actions: [
           ButtonBar(
