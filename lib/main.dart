@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intern/login1.dart';
 import 'package:intern/forgetpassword.dart';
+import 'package:intern/cycle.dart';
 main() {
   runApp(MyApp());
 }
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       //home: forpassword(),
-      home: LoginPage(),
+      //home: LoginPage(),
+      home: cyclepage(),
     );
   }
 }
