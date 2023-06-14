@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       //home: forpassword(),
       //home: LoginPage(),
-      home: cyclepage(),
+      home: cyclepage('admin','1234','Zeen')
     );
   }
 }

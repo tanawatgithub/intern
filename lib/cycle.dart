@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
-
+import 'package:intern/login1.dart';
 class cyclepage extends StatefulWidget {
+  final String? txtname;
+  final String? txtpassword;
+  final String? txtorg;
+
+  const cyclepage(this.txtname, this.txtpassword, this.txtorg);
+
   @override
   _cyclepageState createState() => _cyclepageState();
+
 }
 
 class _cyclepageState extends State<cyclepage> {
-  String _selectedItem = 'Option 1';
-  List<String> _buttonListItems = ['Option 1', 'Option 2', 'Option 3'];
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +22,13 @@ class _cyclepageState extends State<cyclepage> {
         backgroundColor: Colors.white,
         title: Row(
           children: [
+            Text('ยินดีต้อนรับ'),
+            Text('คุณ : ${widget.txtname}'),
+            Text('Password ของคุณ คือ : ${widget.txtpassword}'),
+            Text('Org คือ: ${widget.txtorg}'),
             Spacer(),
             Transform.translate(
-              offset: Offset(-1150, 0), // เลือนตำแหน่งรูปภาพทางขวาประมาณ -1150 หน่วย
+              offset: Offset(-1350, 0), // เลือนตำแหน่งรูปภาพทางขวาประมาณ -1150 หน่วย
               child: Image.asset(
                 'assets/images/Zeenlogo1.png',
                 width: 100,
@@ -27,20 +37,7 @@ class _cyclepageState extends State<cyclepage> {
             ),
           ],
         ),
-        actions: [
-          ButtonBar(
-            children: _buttonListItems.map<Widget>((String value) {
-              return TextButton(
-                child: Text(value),
-                onPressed: () {
-                  setState(() {
-                    _selectedItem = value;
-                  });
-                },
-              );
-            }).toList(),
-          ),
-        ],
+
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(2.0),
           child: Container(
@@ -58,7 +55,7 @@ class _cyclepageState extends State<cyclepage> {
                 children: [
                   Spacer(),
                   Transform.translate(
-                    offset: Offset(-1450, 0),
+                    offset: Offset(-1410, 0),
                     child: Text(
                       'Cycle',
                       style: TextStyle(
@@ -77,7 +74,7 @@ class _cyclepageState extends State<cyclepage> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  SizedBox(width: 25,),
+                  SizedBox(width: 30,),
                   Container(
                     width: 100,
                     height: 100,
@@ -88,7 +85,7 @@ class _cyclepageState extends State<cyclepage> {
                     ),
                   ),
                   Container(
-                    width: 1241,
+                    width: 1341,
                     height: 100,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(255, 255, 255, 1),
