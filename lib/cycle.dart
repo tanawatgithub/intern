@@ -59,7 +59,7 @@ class _cyclepageState extends State<cyclepage> {
                     child: Text(
                       'Cycle',
                       style: TextStyle(
-                        fontFamily: 'Kani',
+                        fontFamily: 'Kanit',
                         fontSize: 20,
                         color: Colors.grey,
                       ),
