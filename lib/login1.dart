@@ -339,7 +339,7 @@ class _LoginPageState extends State<LoginPage> {
                                   child: const Text(
                                     'เข้าสู่ระบบด้วยระบบ PIN',
                                     style: TextStyle(
-                                      fontFamily: 'Kanit',
+                                      fontFamily: 'Kani',
                                       fontSize: 16,
                                       color: Colors.red,
                                       decoration: TextDecoration.underline,
