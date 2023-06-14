@@ -32,7 +32,7 @@ class _cyclepageState extends State<cyclepage> {
         ],
       ),
       body: Center(
-        child: Text('Content goes here'),
+        child: Text('Content goes heree'),
       ),
     );
   }
