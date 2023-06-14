@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                                     horizontal: 20,
                                   ),
                                   child: SizedBox(
-                                    width: 530,
+                                    width: 667,
                                     child: TextField(
                                       style: Theme
                                           .of(context)
@@ -173,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                                     horizontal: 20,
                                   ),
                                   child: Container(
-                                    width: 530,
+                                    width: 667,
                                     child: TextField(
                                       style: Theme
                                           .of(context)
@@ -218,7 +218,7 @@ class _LoginPageState extends State<LoginPage> {
                                 Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 20),
                                   child: Container(
-                                    width: 530,
+                                    width: 667,
                                     child: TextField(
                                       style: Theme
                                           .of(context)

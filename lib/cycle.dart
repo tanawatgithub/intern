@@ -10,6 +10,8 @@ class cyclepage extends StatefulWidget {
 class _cyclepageState extends State<cyclepage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+
+    );
   }
 }
