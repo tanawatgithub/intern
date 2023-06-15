@@ -116,7 +116,7 @@ class _cyclepageState extends State<cyclepage> {
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(255, 255, 255, 1),
                       borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(2),
+                        topRight: Radius.circular(20),
                       ),
                     ),
                   ),
