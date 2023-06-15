@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intern/login1.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class cyclepage extends StatefulWidget {
   final String? txtname;
@@ -18,22 +18,28 @@ class _cyclepageState extends State<cyclepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            Text('ยินดีต้อนรับ'),
-            Text('คุณ : ${widget.txtname}'),
-            Text('Password ของคุณ คือ : ${widget.txtpassword}'),
-            Text('Org คือ: ${widget.txtorg}'),
-            Spacer(),
-            Transform.translate(
-              offset: Offset(-1350, 0), // เลื่อนตำแหน่งรูปภาพทางขวาประมาณ -1350 หน่วย
-              child: Image.asset(
-                'assets/images/Zeenlogo1.png',
-                width: 100,
-                height: 100,
+        title: Container(
+          color: Colors.red,
+          child: Row(
+            children: [
+              Text('ยินดีต้อนรับ'),
+              Text('คุณ : ${widget.txtname}'),
+              Text('Password ของคุณ คือ : ${widget.txtpassword}'),
+              Text('Org คือ: ${widget.txtorg}'),
+              Transform.translate(
+                offset: Offset(-580.w, 0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Image.asset(
+                    'assets/images/Zeenlogo1.png',
+                    width: 220.67.w,
+                    height: 82.75.h,
+                  ),
+                ),
+
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(2.0),
@@ -50,19 +56,6 @@ class _cyclepageState extends State<cyclepage> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Spacer(),
-                  Transform.translate(
-                    offset: Offset(-610, 0),
-                    child: Text(
-                      'Cycle',
-                      style: TextStyle(
-                        fontFamily: 'Kanit',
-                        fontSize: 20,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                  Spacer(),
                   ElevatedButton(
                     onPressed: () => BackButton,
                     style: ElevatedButton.styleFrom(
@@ -82,7 +75,7 @@ class _cyclepageState extends State<cyclepage> {
                           color: Colors.white,
                         ),
                         Text(
-                          'ย้อนกลั',
+                          'ย้อนกลับ',
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -102,11 +95,11 @@ class _cyclepageState extends State<cyclepage> {
               child: Row(
                 children: [
                   SizedBox(
-                    width: 30,
+                    width: 30.w,
                   ),
                   Container(
-                    width: 100,
-                    height: 100,
+                    width: 60.w,
+                    height: 100.h,
                     child: Center(
                       child: Text('1'),
                     ),
@@ -118,8 +111,8 @@ class _cyclepageState extends State<cyclepage> {
                     ),
                   ),
                   Container(
-                    width: 1341,
-                    height: 100,
+                    width: 1290.w,
+                    height: 100.h,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(255, 255, 255, 1),
                       borderRadius: BorderRadius.only(
