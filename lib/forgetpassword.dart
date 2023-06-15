@@ -84,7 +84,7 @@ class _forpasswordState extends State<forpassword> {
           return Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/bg123.png'),
+                image: AssetImage('assets/images/bg1.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -114,7 +114,7 @@ class _forpasswordState extends State<forpassword> {
                                 width: constraints.maxWidth * 0.6,
                                 height: constraints.maxHeight * 0.3,
                                 child: Image.asset(
-                                  'assets/images/Frame 2178.png',
+                                  'assets/images/Zeenlogo.png',
                                 ),
                               ),
                               SizedBox(height: 10),
@@ -143,6 +143,7 @@ class _forpasswordState extends State<forpassword> {
                                       border: OutlineInputBorder(),
                                       labelText: 'องค์กร',
                                       labelStyle: TextStyle(
+                                        fontSize: 18,
                                         color: Colors.orange,
                                       ),
                                       prefixIcon: Icon(
@@ -188,6 +189,7 @@ class _forpasswordState extends State<forpassword> {
                                       border: OutlineInputBorder(),
                                       labelText: 'ชื่อผู้ใช้',
                                       labelStyle: TextStyle(
+                                        fontSize: 17.5,
                                         color: Colors.orange,
                                       ),
                                       prefixIcon: Icon(

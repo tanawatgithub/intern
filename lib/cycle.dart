@@ -1,45 +1,126 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class cyclepage extends StatefulWidget {
+class cyclePage extends StatefulWidget {
   final String? txtname;
   final String? txtpassword;
   final String? txtorg;
 
-  const cyclepage(this.txtname, this.txtpassword, this.txtorg);
+  const cyclePage(this.txtname, this.txtpassword, this.txtorg);
 
   @override
-  _cyclepageState createState() => _cyclepageState();
+  _cyclePageState createState() => _cyclePageState();
+}
+String dropdownValue = 'Option 1';
+
+class Myclipper extends CustomClipper<Rect>{
+  Rect getClip(Size size){
+    return Rect.fromLTWH(1.sp, 1.sp, 50, 50);
+  }
+
+  @override
+  bool shouldReclip(oldCliper) {
+   return false;
+  }
 }
 
-class _cyclepageState extends State<cyclepage> {
+class _cyclePageState extends State<cyclePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Container(
-          color: Colors.red,
-          child: Row(
-            children: [
-              Text('ยินดีต้อนรับ'),
-              Text('คุณ : ${widget.txtname}'),
-              Text('Password ของคุณ คือ : ${widget.txtpassword}'),
-              Text('Org คือ: ${widget.txtorg}'),
-              Transform.translate(
-                offset: Offset(-580.w, 0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Image.asset(
-                    'assets/images/Zeenlogo1.png',
-                    width: 220.67.w,
-                    height: 82.75.h,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(74),
+        child: AppBar(
+          backgroundColor: Colors.white,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Image.asset(
+                'assets/images/Zeenlogo1.png',
+                width: 170.67.sp,
+                height: 60.75.sp,
+              ),
+            ),
+            DropdownButton<String>(
+              // Dropdown ที่ 1
+              value: 'Option 1',
+              onChanged: (String? newValue) {
+                // ทำอะไรสักอย่างเมื่อผู้ใช้เลือกตัวเลือกใน Dropdown ที่ 1
+              },
+              items: <String>['Option 1', 'Option 2', 'Option 3']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+            DropdownButton<String>(
+              // Dropdown ที่ 2
+              value: 'Option A',
+              onChanged: (String? newValue) {
+                // ทำอะไรสักอย่างเมื่อผู้ใช้เลือกตัวเลือกใน Dropdown ที่ 2
+              },
+              items: <String>['Option A', 'Option B', 'Option C']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+            DropdownButton<String>(
+              // Dropdown ที่ 3
+              value: 'Choice X',
+              onChanged: (String? newValue) {
+                // ทำอะไรสักอย่างเมื่อผู้ใช้เลือกตัวเลือกใน Dropdown ที่ 3
+              },
+              items: <String>['Choice X', 'Choice Y', 'Choice Z']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 1555.0.sp),
+                  child: Text(
+                    'ยินดีต้อนรับ',
+                    style: TextStyle(fontSize: 11, color: Colors.black),
                   ),
                 ),
+                Text(
+                  'คุณ : ${widget.txtname}',
+                  style: TextStyle(fontSize: 11, color: Colors.black),
+                ),
+                Text(
+                  'Password ของคุณ คือ : ${widget.txtpassword}',
+                  style: TextStyle(fontSize: 11, color: Colors.black),
+                ),
+                Text(
+                  'Org คือ  :   ${widget.txtorg} ',
+                  style: TextStyle(fontSize: 11, color: Colors.black),
+                ),
+              ],
+            ),
 
+            ClipOval(
+              clipper: Myclipper(),
+              child: Image.asset(
+                'assets/images/Zebra 1.png',
+                width: 50,
+                height: 50,
+                fit: BoxFit.fill,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(2.0),
@@ -48,83 +129,65 @@ class _cyclepageState extends State<cyclepage> {
             height: 2.0, // ความสูงของเส้นขอบ
           ),
         ),
+        ),
       ),
-      body: Column(
-        children: [
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+      body: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 65.sp, vertical: 5.sp),
               child: Row(
                 children: [
-                  ElevatedButton(
-                    onPressed: () => BackButton,
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.orange,
-                      onPrimary: Colors.white,
-                      onSurface: Colors.orange,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        SizedBox(
-                          width: 10,
-                          height: 20,
+                  Expanded(
+                    child: Container(
+                      height: 120.h,
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(2),
                         ),
-                        Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          'ย้อนกลับ',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 30.w,
-                  ),
-                  Container(
-                    width: 60.w,
-                    height: 100.h,
-                    child: Center(
-                      child: Text('1'),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 190, 82, 1),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
                       ),
-                    ),
-                  ),
-                  Container(
-                    width: 1290.w,
-                    height: 100.h,
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 1),
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('No.' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                          Text('Cycle' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                          Text('Audit' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                          Text('StartDate' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                          Text('EndDate' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                          Text('Status' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                        ],
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+            Padding(padding: EdgeInsets.symmetric(horizontal: 65.sp, vertical: 5.sp),
+              child: Container(
+                height: 120.h,
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(2),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('1.' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                    Text('FMGT_2023_01_01' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                    Text('524', style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                    Text('2023-01-01' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                    Text('2023-01-31' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                    Text('DONE' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

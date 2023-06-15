@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(1440, 152), // Design size used for scaling
+      designSize: Size(1920, 1080), // Design size used for scaling
       builder: (context, _) => MaterialApp(
         debugShowCheckedModeBanner: false,
 
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           ),
           primarySwatch: Colors.blue,
         ),
-        home: cyclepage('admin','1234','Zeen'),
+        home: cyclePage('admin','1234','Zeen'),
       ),
     );
   }
