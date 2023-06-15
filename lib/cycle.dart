@@ -82,7 +82,7 @@ class _cyclepageState extends State<cyclepage> {
                           color: Colors.white,
                         ),
                         Text(
-                          'ย้อนกลับ',
+                          'ย้อนกลั',
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
