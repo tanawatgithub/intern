@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intern/login1.dart';
-import 'package:intern/forgetpassword.dart';
+// import 'package:intern/login1.dart';
+// import 'package:intern/forgetpassword.dart';
 import 'package:intern/cycle.dart';
 main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(1920, 1080), // Design size used for scaling
+      designSize: Size(1920, 108), // Design size used for scaling
       builder: (context, _) => MaterialApp(
         debugShowCheckedModeBanner: false,
 
