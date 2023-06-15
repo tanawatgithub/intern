@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intern/login1.dart';
 import 'package:intern/forgetpassword.dart';
 import 'package:intern/cycle.dart';
@@ -12,22 +13,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: TextTheme(
-          bodyLarge: TextStyle(
-            fontFamily: 'Mali' 'Kanit',
+    return ScreenUtilInit(
+      designSize: Size(1440, 1524), // Design size used for scaling
+      builder: (context, _) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+
+        title: 'My App',
+        theme: ThemeData(
+          textTheme: TextTheme(
+            bodyLarge: TextStyle(fontFamily: 'Mali' 'Kanit')
           ),
+          primarySwatch: Colors.blue,
         ),
-        primarySwatch: Colors.blue,
+        home: cyclepage('admin','1234','Zeen'),
       ),
-      //home: forpassword(),
-      //home: LoginPage(),
-      home: cyclepage('admin','1234','Zeen')
     );
   }
 }
 
+// debugShowCheckedModeBanner: false,
 
+// ),
+// home: cyclepage('admin','1234','Zeen'),
 
