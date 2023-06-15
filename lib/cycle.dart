@@ -177,7 +177,7 @@ class _cyclePageState extends State<cyclePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('1.' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                    Text('FMGT_2023_01_01' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                    Text('FMGT_2023_01_0' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
                     Text('524', style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
                     Text('2023-01-01' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
                     Text('2023-01-31' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
