@@ -280,7 +280,7 @@ class _cyclePageState extends State<cyclePage> {
                         Text(
                           '2023-01-31',
                           style: TextStyle(
-                            fontFamily: 'Kanit',
+                            fontFamily: 'Kani',
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
