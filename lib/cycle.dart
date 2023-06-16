@@ -26,135 +26,244 @@ class Myclipper extends CustomClipper<Rect>{
   }
 }
 
-
 class _cyclePageState extends State<cyclePage> {
+  List<String> items = ['IN_PROGRESS', 'DONE', 'NEW', 'CANCEL', 'END'];
+  String? selectedItem;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100),
+        preferredSize: Size.fromHeight(50),
         child: AppBar(
           backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox( width: 100,
-              child: Container(
-                //constraints: BoxConstraints(maxWidth: 220.67, maxHeight: 82.75),
-                width: 220.67,
-                child: Row(
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Image.asset(
-                        'assets/images/Zeenlogo1.png',
-                        width: 220.67.sp,
-                        height: 82.75.sp,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                child: Container(
+                  constraints: BoxConstraints(maxWidth: 220.67, maxHeight: 82.75),
+                  width: 220.67,
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Image.asset(
+                          'assets/images/Zeenlogo1.png',
+                          width: 150,
+                          height: 50,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Row(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      'ยินดีต้อนรับ',
-                      style: TextStyle(fontSize: 11, color: Colors.black),
-                    ),
-                    Text(
-                      'คุณ : ${widget.txtname}',
-                      style: TextStyle(fontSize: 11, color: Colors.black),
-                    ),
-                    Text(
-                      'Password ของคุณ คือ : ${widget.txtpassword}',
-                      style: TextStyle(fontSize: 11, color: Colors.black),
-                    ),
-                    Text(
-                      'Org คือ  :   ${widget.txtorg} ',
-                      style: TextStyle(fontSize: 11, color: Colors.black),
-                    ),
-                  ],
-                ),
-
-                ClipOval(
-                  clipper: Myclipper(),
-                  child: Image.asset(
-                    'assets/images/Zebra 1.png',
-                    width: 50,
-                    height: 50,
-                    fit: BoxFit.fill,
+                    ],
                   ),
                 ),
-              ],
-            )
-          ],
-        ),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(2.0),
-          child: Container(
-            color: Colors.red, // สีแดง
-            height: 2.0, // ความสูงของเส้นขอบ
+              ),
+              SizedBox(
+                child: Container(
+                  child: Row(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'ยินดีต้อนรับ',
+                            style: TextStyle(fontSize: 11, color: Colors.black),
+                          ),
+                          Text(
+                            'คุณ : ${widget.txtname}',
+                            style: TextStyle(fontSize: 11, color: Colors.black),
+                          ),
+                          Text(
+                            'Org คือ  :   ${widget.txtorg} ',
+                            style: TextStyle(fontSize: 11, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                      ClipOval(
+                        clipper: Myclipper(),
+                        child: Image.asset(
+                          'assets/images/Zebra 1.png',
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
-        ),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(2.0),
+            child: Container(
+              color: Colors.red, // สีแดง
+              height: 2.0, // ความสูงของเส้นขอบ
+            ),
+          ),
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(2.0),
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 65.sp, vertical: 5.sp),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 120.h,
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(255, 255, 255, 1),
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(2),
+              padding: EdgeInsets.all(30.0),
+              child: SizedBox(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 120.h,
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(255, 255, 255, 1),
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(2),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'No.',
+                              style: TextStyle(
+                                fontFamily: 'Kanit',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              'Cycle',
+                              style: TextStyle(
+                                fontFamily: 'Kanit',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              'Audit',
+                              style: TextStyle(
+                                fontFamily: 'Kanit',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              'StartDate',
+                              style: TextStyle(
+                                fontFamily: 'Kanit',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              'EndDate',
+                              style: TextStyle(
+                                fontFamily: 'Kanit',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            DropdownButton<String>(
+                              hint: Text('Status'),
+                              value: selectedItem,
+                              items: items
+                                  .map(
+                                    (item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: TextStyle(fontSize: 30),
+                                  ),
+                                ),
+                              )
+                                  .toList(),
+                              onChanged: (item) => setState(() => selectedItem = item),
+                            ),
+                            // Text(
+                            //   'Status',
+                            //   style: TextStyle(
+                            //     fontFamily: 'Kanit',
+                            //     fontWeight: FontWeight.bold,
+                            //     fontSize: 20,
+                            //   ),
+                            // ),
+                          ],
                         ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('No.' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  , fontSize: 20),),
-                          Text('Cycle' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                          Text('Audit' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                          Text('StartDate' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                          Text('EndDate' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                          Text('Status' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                        ],
-                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-            Padding(padding: EdgeInsets.symmetric(horizontal: 65.sp, vertical: 5.sp),
+            SizedBox(
+              height: 50,
               child: Container(
-                height: 120.h,
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(255, 255, 255, 1),
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(2),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 65.sp, vertical: 5.sp),
+                  child: Container(
+                    height: 120.h,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(255, 255, 255, 1),
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(2),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '1.',
+                          style: TextStyle(
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Text(
+                          'FMGT_2023_01_01',
+                          style: TextStyle(
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Text(
+                          '524',
+                          style: TextStyle(
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Text(
+                          '2023-01-01',
+                          style: TextStyle(
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Text(
+                          '2023-01-31',
+                          style: TextStyle(
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Text(
+                          'DONE',
+                          style: TextStyle(
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('1.' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                    Text('FMGT_2023_01_01' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                    Text('524', style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                    Text('2023-01-01' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ,fontSize: 20),),
-                    Text('2023-01-31' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                    Text('DONE' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
-                  ],
                 ),
               ),
             ),
