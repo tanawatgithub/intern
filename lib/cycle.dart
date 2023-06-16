@@ -174,7 +174,7 @@ class _cyclePageState extends State<cyclePage> {
                                   value: item,
                                   child: Text(
                                     item,
-                                    style: TextStyle(fontSize: 30),
+                                    style: TextStyle(fontSize: 10),
                                   ),
                                 ),
                               )
