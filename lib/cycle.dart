@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intern/domain/status.dart';
+import 'package:http/http.dart';
 
 class cyclePage extends StatefulWidget {
   final String? txtname;
@@ -24,102 +26,72 @@ class Myclipper extends CustomClipper<Rect>{
   }
 }
 
+
 class _cyclePageState extends State<cyclePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(74),
+        preferredSize: Size.fromHeight(100),
         child: AppBar(
           backgroundColor: Colors.white,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Image.asset(
-                'assets/images/Zeenlogo1.png',
-                width: 170.67.sp,
-                height: 60.75.sp,
+            SizedBox( width: 100,
+              child: Container(
+                //constraints: BoxConstraints(maxWidth: 220.67, maxHeight: 82.75),
+                width: 220.67,
+                child: Row(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Image.asset(
+                        'assets/images/Zeenlogo1.png',
+                        width: 220.67.sp,
+                        height: 82.75.sp,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            DropdownButton<String>(
-              // Dropdown ที่ 1
-              value: 'Option 1',
-              onChanged: (String? newValue) {
-                // ทำอะไรสักอย่างเมื่อผู้ใช้เลือกตัวเลือกใน Dropdown ที่ 1
-              },
-              items: <String>['Option 1', 'Option 2', 'Option 3']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            DropdownButton<String>(
-              // Dropdown ที่ 2
-              value: 'Option A',
-              onChanged: (String? newValue) {
-                // ทำอะไรสักอย่างเมื่อผู้ใช้เลือกตัวเลือกใน Dropdown ที่ 2
-              },
-              items: <String>['Option A', 'Option B', 'Option C']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            DropdownButton<String>(
-              // Dropdown ที่ 3
-              value: 'Choice X',
-              onChanged: (String? newValue) {
-                // ทำอะไรสักอย่างเมื่อผู้ใช้เลือกตัวเลือกใน Dropdown ที่ 3
-              },
-              items: <String>['Choice X', 'Choice Y', 'Choice Z']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
+            Row(
               children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 1555.0.sp),
-                  child: Text(
-                    'ยินดีต้อนรับ',
-                    style: TextStyle(fontSize: 11, color: Colors.black),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      'ยินดีต้อนรับ',
+                      style: TextStyle(fontSize: 11, color: Colors.black),
+                    ),
+                    Text(
+                      'คุณ : ${widget.txtname}',
+                      style: TextStyle(fontSize: 11, color: Colors.black),
+                    ),
+                    Text(
+                      'Password ของคุณ คือ : ${widget.txtpassword}',
+                      style: TextStyle(fontSize: 11, color: Colors.black),
+                    ),
+                    Text(
+                      'Org คือ  :   ${widget.txtorg} ',
+                      style: TextStyle(fontSize: 11, color: Colors.black),
+                    ),
+                  ],
+                ),
+
+                ClipOval(
+                  clipper: Myclipper(),
+                  child: Image.asset(
+                    'assets/images/Zebra 1.png',
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.fill,
                   ),
                 ),
-                Text(
-                  'คุณ : ${widget.txtname}',
-                  style: TextStyle(fontSize: 11, color: Colors.black),
-                ),
-                Text(
-                  'Password ของคุณ คือ : ${widget.txtpassword}',
-                  style: TextStyle(fontSize: 11, color: Colors.black),
-                ),
-                Text(
-                  'Org คือ  :   ${widget.txtorg} ',
-                  style: TextStyle(fontSize: 11, color: Colors.black),
-                ),
               ],
-            ),
-
-            ClipOval(
-              clipper: Myclipper(),
-              child: Image.asset(
-                'assets/images/Zebra 1.png',
-                width: 50,
-                height: 50,
-                fit: BoxFit.fill,
-              ),
-            ),
+            )
           ],
         ),
         bottom: PreferredSize(
@@ -151,12 +123,12 @@ class _cyclePageState extends State<cyclePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('No.' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                          Text('Cycle' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                          Text('Audit' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                          Text('StartDate' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                          Text('EndDate' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                          Text('Status' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                          Text('No.' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  , fontSize: 20),),
+                          Text('Cycle' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
+                          Text('Audit' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
+                          Text('StartDate' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
+                          Text('EndDate' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
+                          Text('Status' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
                         ],
                       ),
                     ),
@@ -176,12 +148,12 @@ class _cyclePageState extends State<cyclePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('1.' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                    Text('FMGT_2023_01_0' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                    Text('524', style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                    Text('2023-01-01' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                    Text('2023-01-31' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
-                    Text('DONE' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
+                    Text('1.' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
+                    Text('FMGT_2023_01_01' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
+                    Text('524', style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
+                    Text('2023-01-01' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ,fontSize: 20),),
+                    Text('2023-01-31' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
+                    Text('DONE' , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold ,fontSize: 20 ),),
                   ],
                 ),
               ),
