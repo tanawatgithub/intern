@@ -364,7 +364,7 @@ class _LoginPageState extends State<LoginPage> {
                                     children: [
                                       const Text('version: 1.0.0.Beta    ',
                                         style: TextStyle(
-                                          fontFamily: 'Kanit',
+                                          fontFamily: 'Kani',
                                           fontSize: 1,
                                           color: Colors.orange,
                                         ),
