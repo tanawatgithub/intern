@@ -27,8 +27,12 @@ class Myclipper extends CustomClipper<Rect>{
 }
 
 class _cyclePageState extends State<cyclePage> {
-  List<String> items = ['IN_PROGRESS', 'DONE', 'NEW', 'CANCEL', 'END'];
+  List<String> items = ['IN_PROGRESS', 'DONE', 'NEW', 'CANCEL'];
+  List<String> items1 = ['2023-06-16','2023-06-15','2023-06-14','2023-06-13','2023-06-12','2023-06-11','2023-06-10','2023-06-09','2023-06-08','2023-06-07','2023-06-06','2023-06-05','2023-06-04','2023-06-03','2023-06-02','2023-06-01'];
+  List<String> items2 = ['2023-06-16','2023-06-15','2023-06-14','2023-06-13','2023-06-12','2023-06-11','2023-06-10','2023-06-09','2023-06-08','2023-06-07','2023-06-06','2023-06-05','2023-06-04','2023-06-03','2023-06-02','2023-06-01'];
   String? selectedItem;
+  String? selectedItem1;
+  String? selectedItem2;
 
   @override
   Widget build(BuildContext context) {
@@ -149,21 +153,45 @@ class _cyclePageState extends State<cyclePage> {
                                 fontSize: 20,
                               ),
                             ),
-                            Text(
-                              'StartDate',
-                              style: TextStyle(
-                                fontFamily: 'Kanit',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
+                            DropdownButton<String>(
+                              hint: Text('StartDate'),
+                              value: selectedItem2,
+                              items: items2
+                                  .map(
+                                    (item2) => DropdownMenuItem<String>(
+                                  value: item2,
+                                  child: Text(
+                                    item2,
+                                    style: TextStyle(
+                                      fontFamily: 'Kanit',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              )
+                                  .toList(),
+                              onChanged: (item2) => setState(() => selectedItem2 = item2),
                             ),
-                            Text(
-                              'EndDate',
-                              style: TextStyle(
-                                fontFamily: 'Kanit',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
+                            DropdownButton<String>(
+                              hint: Text('EndDate'),
+                              value: selectedItem1,
+                              items: items1
+                                  .map(
+                                    (item1) => DropdownMenuItem<String>(
+                                  value: item1,
+                                  child: Text(
+                                    item1,
+                                    style: TextStyle(
+                                      fontFamily: 'Kanit',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              )
+                                  .toList(),
+                              onChanged: (item1) => setState(() => selectedItem1 = item1),
                             ),
                             DropdownButton<String>(
                               hint: Text('Status'),
@@ -174,7 +202,11 @@ class _cyclePageState extends State<cyclePage> {
                                   value: item,
                                   child: Text(
                                     item,
-                                    style: TextStyle(fontSize: 20),
+                                    style: TextStyle(
+                                      fontFamily: 'Kanit',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
                                   ),
                                 ),
                               )
