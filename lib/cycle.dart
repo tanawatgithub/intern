@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intern/domain/status.dart';
+
 import 'package:http/http.dart';
 
 class cyclePage extends StatefulWidget {
@@ -280,7 +280,7 @@ class _cyclePageState extends State<cyclePage> {
                         Text(
                           '2023-01-31',
                           style: TextStyle(
-                            fontFamily: 'Kani',
+                            fontFamily: 'Kanit',
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
