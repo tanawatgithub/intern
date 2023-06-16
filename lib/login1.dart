@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intern/cycle.dart';
 import 'package:intern/loginpage1.dart';
 import 'package:intern/testp.dart';
 import 'package:intern/forgetpassword.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -45,11 +47,7 @@ class _LoginPageState extends State<LoginPage> {
         context,
         MaterialPageRoute(
           builder: (context) =>
-              LoginHomePage(
-                namecon.text,
-                passwordcon.text,
-                orgcon.text,
-              ),
+              cyclePage('admin', '1234', 'Zeen'),
         ),
       );
     }
@@ -94,27 +92,33 @@ class _LoginPageState extends State<LoginPage> {
                       horizontal: 20,
                     ),
                     child: Container(
+                      constraints: BoxConstraints(maxWidth: 667, maxHeight: 870),
                       width: 667,
-                      height: 835,
+                      // height: 835,
                       decoration: BoxDecoration(
                         color: const Color.fromRGBO(255, 255, 255, 1),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(color: Colors.orange),
                       ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              SizedBox(
-                                width: constraints.maxWidth * 0.6,
-                                height: constraints.maxHeight * 0.3,
-                                child: Image.asset(
-                                  'assets/images/Zeenlogo.png',
+                              Padding(
+                                padding:  EdgeInsets.all(30.0),
+                                child: SizedBox(
+                                  width: constraints.maxWidth * 0.6,
+                                  height: constraints.maxHeight * 0.3,
+                                  child: Image.asset(
+                                    'assets/images/Zeenlogo.png',
+                                  ),
                                 ),
                               ),
-                              const SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: const SizedBox(width: 0.6 , height: 0.3,),
+                              ),
                               const Text(
                                 'เข้าสู่ระบบ',
                                 style: TextStyle(
@@ -337,14 +341,14 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => testp(),
+                                      builder: (context) => testp()
                                     ),
                                   );
                                 },
                                 child: const Text(
                                   'เข้าสู่ระบบด้วยระบบ PIN',
                                   style: TextStyle(
-                                    fontFamily: 'Kani',
+                                    fontFamily: 'Kanit',
                                     fontSize: 16,
                                     color: Colors.red,
                                     decoration: TextDecoration.underline,
@@ -361,7 +365,7 @@ class _LoginPageState extends State<LoginPage> {
                                       const Text('version: 1.0.0.Beta    ',
                                         style: TextStyle(
                                           fontFamily: 'Kanit',
-                                          fontSize: 16,
+                                          fontSize: 1,
                                           color: Colors.orange,
                                         ),
                                       )
