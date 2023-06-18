@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:http/http.dart';
+import 'package:intern/service.dart';
+
+import 'component.dart';
+import 'domain/cycle.dart';
 
 class cyclePage extends StatefulWidget {
   final String? txtname;
@@ -33,6 +37,17 @@ class _cyclePageState extends State<cyclePage> {
   String? selectedItem;
   String? selectedItem1;
   String? selectedItem2;
+  List<Cycle> cycles = [];
+
+  @override
+  void initState() {
+    cyclef();
+    super.initState();
+  }
+
+  cyclef() async {
+    cycles = await CycleService().getCycles();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -242,59 +257,11 @@ class _cyclePageState extends State<cyclePage> {
                         topRight: Radius.circular(2),
                       ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '1.',
-                          style: TextStyle(
-                            fontFamily: 'Kanit',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          'FMGT_2023_01_01',
-                          style: TextStyle(
-                            fontFamily: 'Kanit',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          '524',
-                          style: TextStyle(
-                            fontFamily: 'Kanit',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          '2023-01-01',
-                          style: TextStyle(
-                            fontFamily: 'Kanit',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          '2023-01-31',
-                          style: TextStyle(
-                            fontFamily: 'Kanit',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                        Text(
-                          'DONE',
-                          style: TextStyle(
-                            fontFamily: 'Kanit',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
+                    child: Column(children: [
+                      for(var cycle in cycles) ...[
+                        CycleBlock(orgID: cycle.orgID!, cycle: cycle.cycle!, startDate: cycle.startDate!, endDate: cycle.endDate!, status: cycle.status!),
                       ],
-                    ),
+                    ],),
                   ),
                 ),
               ),
