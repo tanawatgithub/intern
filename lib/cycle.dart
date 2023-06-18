@@ -253,7 +253,7 @@ class _cyclePageState extends State<cyclePage> {
                     // height: 2000.h,
                     width: 2100,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 1),
+                      color: Color.fromRGBO(255, 255, 255, 0.75),
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(2),
                       ),
