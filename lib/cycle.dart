@@ -49,6 +49,21 @@ class _cyclePageState extends State<cyclePage> {
     cycles = await CycleService().getCycles();
   }
 
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: selectedDate ?? DateTime.now(),
+      firstDate: DateTime(2021),
+      lastDate: DateTime(2023),
+    );
+
+    if (pickedDate != null) {
+      setState(() {
+        selectedDate = pickedDate;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -244,27 +259,24 @@ class _cyclePageState extends State<cyclePage> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 100,
-              child: Container(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 65.sp, vertical: 5.sp),
-                  child: Container(
-                    // height: 2000.h,
-                    width: 2100,
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 0.75),
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(2),
-                      ),
+            Container(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 65.sp, vertical: 5.sp),
+                child: Container(
+                  // height: 2000.h,
+                  width: 2100,
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(255, 255, 255, 1),
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(2),
                     ),
-                    child: Column(
-                      children: [
-                      for(var cycle in cycles) ...[
-                        CycleBlock(orgID: cycle.orgID!, cycle: cycle.cycle!, startDate: cycle.startDate!, endDate: cycle.endDate!, status: cycle.status!),
-                      ],
-                    ],),
                   ),
+                  child: Column(
+                    children: [
+                    for(var cycle in cycles) ...[
+                      CycleBlock(orgID: cycle.orgID!, cycle: cycle.cycle!, startDate: cycle.startDate!, endDate: cycle.endDate!, status: cycle.status!),
+                    ],
+                  ],),
                 ),
               ),
             ),
