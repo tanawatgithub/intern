@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:http/http.dart';
 import 'package:intern/service.dart';
 
 import 'component.dart';
@@ -38,6 +37,7 @@ class _cyclePageState extends State<cyclePage> {
   String? selectedItem1;
   String? selectedItem2;
   List<Cycle> cycles = [];
+  DateTime? selectedDate;
 
   @override
   void initState() {
@@ -245,19 +245,21 @@ class _cyclePageState extends State<cyclePage> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 100,
               child: Container(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 65.sp, vertical: 5.sp),
                   child: Container(
-                    height: 120.h,
+                    // height: 2000.h,
+                    width: 2100,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(255, 255, 255, 1),
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(2),
                       ),
                     ),
-                    child: Column(children: [
+                    child: Column(
+                      children: [
                       for(var cycle in cycles) ...[
                         CycleBlock(orgID: cycle.orgID!, cycle: cycle.cycle!, startDate: cycle.startDate!, endDate: cycle.endDate!, status: cycle.status!),
                       ],
