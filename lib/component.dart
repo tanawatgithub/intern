@@ -164,7 +164,7 @@ class CycleBlock extends StatelessWidget {
                         fontFamily: 'Kanit',
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 1,
                       ),
                     ),
                   ),
