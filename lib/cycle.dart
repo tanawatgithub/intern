@@ -1,43 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:intern/service.dart';
-
 import 'component.dart';
 import 'domain/cycle.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intern/utils.dart';
+import 'package:flutter/cupertino.dart';
 
 class cyclePage extends StatefulWidget {
   final String? txtname;
   final String? txtpassword;
   final String? txtorg;
 
-  const cyclePage(this.txtname, this.txtpassword, this.txtorg);
+   const cyclePage(this.txtname, this.txtpassword, this.txtorg);
+
 
   @override
   _cyclePageState createState() => _cyclePageState();
 }
+
 String dropdownValue = 'Option 1';
 
-class Myclipper extends CustomClipper<Rect>{
-  Rect getClip(Size size){
+class Myclipper extends CustomClipper<Rect> {
+  Rect getClip(Size size) {
     return Rect.fromLTWH(1.sp, 1.sp, 50, 50);
   }
 
   @override
   bool shouldReclip(oldCliper) {
-   return false;
+    return false;
   }
 }
 
 class _cyclePageState extends State<cyclePage> {
-  List<String> items = ['IN_PROGRESS', 'DONE', 'NEW', 'CANCEL'];
-  List<String> items1 = ['2023-06-16','2023-06-15','2023-06-14','2023-06-13','2023-06-12','2023-06-11','2023-06-10','2023-06-09','2023-06-08','2023-06-07','2023-06-06','2023-06-05','2023-06-04','2023-06-03','2023-06-02','2023-06-01'];
-  List<String> items2 = ['2023-06-16','2023-06-15','2023-06-14','2023-06-13','2023-06-12','2023-06-11','2023-06-10','2023-06-09','2023-06-08','2023-06-07','2023-06-06','2023-06-05','2023-06-04','2023-06-03','2023-06-02','2023-06-01'];
-  String? selectedItem;
-  String? selectedItem1;
-  String? selectedItem2;
+
+
+
   List<Cycle> cycles = [];
   DateTime? selectedDate;
+
+  int currentPage = 0; // หน้าปัจจุบันของข้อมูล
 
   @override
   void initState() {
@@ -66,222 +68,430 @@ class _cyclePageState extends State<cyclePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
-        child: AppBar(
-          backgroundColor: Colors.white,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                child: Container(
-                  constraints: BoxConstraints(maxWidth: 220.67, maxHeight: 82.75),
-                  width: 220.67,
-                  child: Row(
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Image.asset(
-                          'assets/images/Zeenlogo1.png',
-                          width: 150,
-                          height: 50,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                child: Container(
-                  child: Row(
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            'ยินดีต้อนรับ',
-                            style: TextStyle(fontSize: 11, color: Colors.black),
-                          ),
-                          Text(
-                            'คุณ : ${widget.txtname}',
-                            style: TextStyle(fontSize: 11, color: Colors.black),
-                          ),
-                          Text(
-                            'Org คือ  :   ${widget.txtorg} ',
-                            style: TextStyle(fontSize: 11, color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      ClipOval(
-                        clipper: Myclipper(),
-                        child: Image.asset(
-                          'assets/images/Zebra 1.png',
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(2.0),
-            child: Container(
-              color: Colors.red, // สีแดง
-              height: 2.0, // ความสูงของเส้นขอบ
+    double baseWidth = 1440;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.90;
+
+    return Container(
+      // color:  Colors.grey,
+      width: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            padding:
+                EdgeInsets.fromLTRB(65 * fem, 31.5 * fem, 65 * fem, 26.5 * fem),
+            width: double.infinity,
+            height: 150 * fem,
+            decoration: BoxDecoration(
+              color: Colors.white,
             ),
-          ),
-        ),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(2.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(30.0),
-              child: SizedBox(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 120.h,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.fromLTRB(
+                      0 * fem, 0 * fem, 801.33 * fem, 0 * fem),
+                  width: 220 * fem,
+                  height: 82 * fem,
+                  child: Image.asset(
+                    'assets/images/zeenapplogo.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(
+                      0 * fem, 18.5 * fem, 0 * fem, 0 * fem),
+                  height: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Color(0xffffffff),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 0 * fem, 7 * fem, 0 * fem),
+                        padding: EdgeInsets.fromLTRB(
+                            4 * fem, 0 * fem, 0 * fem, 14.5 * fem),
+                        height: double.infinity,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(255, 255, 255, 1),
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(2),
-                          ),
+                          color: Color(0xffffffff),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              'No.',
-                              style: TextStyle(
-                                fontFamily: 'Kanit',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                            Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 6 * fem, 2 * fem),
+                              constraints: BoxConstraints(
+                                maxWidth: 158 * fem,
+                              ),
+                              child: Text(
+                                'พิริยะ ณิทธิมนพันธ์ุ',
+                                style: TextStyle(
+                                  fontFamily: 'Kanit',
+                                  fontSize: 20 * ffem,
+                                  fontWeight: FontWeight.w600,
+                                  height: 0.9 * ffem / fem,
+                                  //letterSpacing: 0.5 * fem,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              // useridauditor01zeencloud4mU (0:91)
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 1 * fem, 15 * fem),
+                              child: Text(
+                                'User ID : auditor01@zeen.cloud',
+                                style: TextStyle(
+                                  fontFamily: 'Kanit',
+                                  fontSize: 15 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 0.3333333333 * ffem / fem,
+                                  // letterSpacing: 0.400000006 * fem,
+                                  color: Color(0xff6d7c84),
+                                ),
                               ),
                             ),
                             Text(
-                              'Cycle',
+                              // orgplus8FY (0:93)
+                              'ORG : PLUS',
                               style: TextStyle(
                                 fontFamily: 'Kanit',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                                fontSize: 14 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 0.3571428571 * ffem / fem,
+                                letterSpacing: 0.400000006 * fem,
+                                color: Color(0xfffd7e18),
                               ),
                             ),
-                            Text(
-                              'Audit',
-                              style: TextStyle(
-                                fontFamily: 'Kanit',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                            DropdownButton<String>(
-                              hint: Text('StartDate'),
-                              value: selectedItem2,
-                              items: items2
-                                  .map(
-                                    (item2) => DropdownMenuItem<String>(
-                                  value: item2,
-                                  child: Text(
-                                    item2,
-                                    style: TextStyle(
-                                      fontFamily: 'Kanit',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              )
-                                  .toList(),
-                              onChanged: (item2) => setState(() => selectedItem2 = item2),
-                            ),
-                            DropdownButton<String>(
-                              hint: Text('EndDate'),
-                              value: selectedItem1,
-                              items: items1
-                                  .map(
-                                    (item1) => DropdownMenuItem<String>(
-                                  value: item1,
-                                  child: Text(
-                                    item1,
-                                    style: TextStyle(
-                                      fontFamily: 'Kanit',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              )
-                                  .toList(),
-                              onChanged: (item1) => setState(() => selectedItem1 = item1),
-                            ),
-                            DropdownButton<String>(
-                              hint: Text('Status'),
-                              value: selectedItem,
-                              items: items
-                                  .map(
-                                    (item) => DropdownMenuItem<String>(
-                                  value: item,
-                                  child: Text(
-                                    item,
-                                    style: TextStyle(
-                                      fontFamily: 'Kanit',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              )
-                                  .toList(),
-                              onChanged: (item) => setState(() => selectedItem = item),
-                            ),
-                            // Text(
-                            //   'Status',
-                            //   style: TextStyle(
-                            //     fontFamily: 'Kanit',
-                            //     fontWeight: FontWeight.bold,
-                            //     fontSize: 20,
-                            //   ),
-                            // ),
                           ],
                         ),
                       ),
-                    ),
-                  ],
+                      Container(
+                        // maskgroupqfk (0:96)
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 0 * fem, 0 * fem, 12.5 * fem),
+                        width: 60 * fem,
+                        height: 60 * fem,
+                        child: Image.asset(
+                          'assets/images/mask-group.png',
+                          width: 60 * fem,
+                          height: 60 * fem,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-            Container(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 65.sp, vertical: 5.sp),
-                child: Container(
-                  // height: 2000.h,
-                  width: 2100,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 255, 255, 0.75),
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(2),
+          ),
+          Container(
+            // frame5270YaA (0:100)
+            padding: EdgeInsets.fromLTRB(0 * fem, 9 * fem, 0 * fem, 0 * fem),
+            width: double.infinity,
+            height: 5 * fem,
+            decoration: BoxDecoration(
+              color: Color(0xffdc2529),
+            ),
+          ),
+          //-----------------------------------------------------------------------------------
+          SizedBox(
+            child: Container(
+              padding: EdgeInsets.fromLTRB(
+                  20 * fem, 22 * fem, 42.17 * fem, 21 * fem),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Row(
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    // noB8a (0:109)
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
+                    child: Text(
+                      'No.',
+                      style: TextStyle(
+                        fontFamily: 'Kanit',
+                        fontSize: 25 * ffem,
+                        fontWeight: FontWeight.w600,
+                        height: 0.64 * ffem / fem,
+                        letterSpacing: 0.5 * fem,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
-                  child: Column(
-                    children: [
-                    for(var cycle in cycles) ...[
-                      CycleBlock(orgID: cycle.orgID!, cycle: cycle.cycle!, startDate: cycle.startDate!, endDate: cycle.endDate!, status: cycle.status!),
-                    ],
-                  ],),
-                ),
+                  Container(
+                    // cycleFu8 (0:115)
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
+                    child: Text(
+                      'Cycle',
+                      style: TextStyle(
+                        fontFamily: 'Kanit',
+                        fontSize: 25 * ffem,
+                        fontWeight: FontWeight.w600,
+                        height: 0.64 * ffem / fem,
+                        letterSpacing: 0.5 * fem,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    // frame5351m6n (0:116)
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
+                    child: Row(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          // auditJ6i (0:117)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 10 * fem, 0 * fem),
+                          child: Text(
+                            'Audit',
+                            style: TextStyle(
+                              fontFamily: 'Kanit',
+                              fontSize: 25 * ffem,
+                              fontWeight: FontWeight.w600,
+                              height: 0.64 * ffem / fem,
+                              letterSpacing: 0.5 * fem,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    // frame5352kDc (0:119)
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
+                    child: Row(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          // startdateVBC (0:120)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 10 * fem, 0 * fem),
+                          child: Text(
+                            'StartDate',
+                            style: TextStyle(
+                              fontFamily: 'Kanit',
+                              fontSize: 25 * ffem,
+                              fontWeight: FontWeight.w600,
+                              height: 0.64 * ffem / fem,
+                              letterSpacing: 0.5 * fem,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    // frame5353wot (0:122)
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 0 * fem, 154.17 * fem, 1 * fem),
+                    child: Row(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          // enddatetDL (0:123)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 9 * fem, 0 * fem),
+                          child: Text(
+                            'EndDate',
+                            style: TextStyle(
+                              fontFamily: 'Kanit',
+                              fontSize: 25 * ffem,
+                              fontWeight: FontWeight.w600,
+                              height: 0.64 * ffem / fem,
+                              letterSpacing: 0.5 * fem,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    // frame5354vQv (0:125)
+                    margin:
+                        EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                    child: Row(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          // status4X8 (0:126)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 10 * fem, 0 * fem),
+                          child: Text(
+                            'Status',
+                            style: TextStyle(
+                              fontFamily: 'Kanit',
+                              fontSize: 25 * ffem,
+                              fontWeight: FontWeight.w600,
+                              height: 0.64 * ffem / fem,
+                              letterSpacing: 0.5 * fem,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+          SizedBox(
+            child: Container(
+              //data
+              padding:
+                  EdgeInsets.fromLTRB(30 * fem, 26 * fem, 30 * fem, 26 * fem),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(255, 255, 255, 1),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(2),
+                ),
+              ),
+              child: Column(
+                children: [
+                  for (var cycle in cycles) ...[
+                    CycleBlock(
+                      orgID: cycle.orgID!,
+                      cycle: cycle.cycle!,
+                      startDate: cycle.startDate!,
+                      endDate: cycle.endDate!,
+                      status: cycle.status!
+                    ),
+                  ]
+                ],
+              ),
+              // child: Row(
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: [
+              //     Container(
+              //       margin: EdgeInsets.fromLTRB(
+              //           0 * fem, 0 * fem, 128.6 * fem, 0 * fem),
+              //       child: Text(
+              //         '1',
+              //         style: SafeGoogleFont(
+              //           'Kanit',
+              //           fontSize: 25 * ffem,
+              //           fontWeight: FontWeight.w400,
+              //           height: 0.64 * ffem / fem,
+              //           letterSpacing: 0.5 * fem,
+              //           color: Color(0xff3f3f46),
+              //         ),
+              //       ),
+              //     ),
+              //     Container(
+              //       // fmgt20230101WbQ (0:130)
+              //       margin: EdgeInsets.fromLTRB(
+              //           0 * fem, 0 * fem, 129.6 * fem, 0 * fem),
+              //       child: Text(
+              //         'FMGT_2023_01_01',
+              //         style: SafeGoogleFont(
+              //           'Kanit',
+              //           fontSize: 25 * ffem,
+              //           fontWeight: FontWeight.w700,
+              //           height: 0.64 * ffem / fem,
+              //           letterSpacing: 0.5 * fem,
+              //           color: Color(0xff3f3f46),
+              //         ),
+              //       ),
+              //     ),
+              //     Container(
+              //       // dR8 (0:131)
+              //       margin: EdgeInsets.fromLTRB(
+              //           0 * fem, 0 * fem, 129.6 * fem, 0 * fem),
+              //       child: Text(
+              //         '524',
+              //         style: SafeGoogleFont(
+              //           'Kanit',
+              //           fontSize: 20 * ffem,
+              //           fontWeight: FontWeight.w400,
+              //           height: 0.8 * ffem / fem,
+              //           letterSpacing: 0.5 * fem,
+              //           color: Color(0xff3f3f46),
+              //         ),
+              //       ),
+              //     ),
+              //     Container(
+              //       // MM8 (0:132)
+              //       margin: EdgeInsets.fromLTRB(
+              //           0 * fem, 0 * fem, 128.6 * fem, 0 * fem),
+              //       child: Text(
+              //         '2023-01-01',
+              //         style: SafeGoogleFont(
+              //           'Kanit',
+              //           fontSize: 20 * ffem,
+              //           fontWeight: FontWeight.w400,
+              //           height: 0.8 * ffem / fem,
+              //           letterSpacing: 0.5 * fem,
+              //           color: Color(0xff3f3f46),
+              //         ),
+              //       ),
+              //     ),
+              //     Container(
+              //       // eb8 (0:133)
+              //       margin: EdgeInsets.fromLTRB(
+              //           0 * fem, 0 * fem, 129.6 * fem, 0 * fem),
+              //       child: Text(
+              //         '2023-01-31',
+              //         style: SafeGoogleFont(
+              //           'Kanit',
+              //           fontSize: 20 * ffem,
+              //           fontWeight: FontWeight.w400,
+              //           height: 0.8 * ffem / fem,
+              //           letterSpacing: 0.5 * fem,
+              //           color: Color(0xff3f3f46),
+              //         ),
+              //       ),
+              //     ),
+              //     Container(
+              //       // statusku4 (0:134)
+              //       width: 144 * fem,
+              //       height: 28 * fem,
+              //       decoration: BoxDecoration(
+              //         border: Border.all(color: Color(0xfffd7e18)),
+              //         color: Color(0xfffd7e18),
+              //         borderRadius: BorderRadius.circular(7 * fem),
+              //       ),
+              //       child: Center(
+              //         child: Center(
+              //           child: Text(
+              //             'IN_PROGRESS',
+              //             textAlign: TextAlign.center,
+              //             style: SafeGoogleFont(
+              //               'Kanit',
+              //               fontSize: 20 * ffem,
+              //               fontWeight: FontWeight.w600,
+              //               height: 1.4 * ffem / fem,
+              //               color: Color(0xffffffff),
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+            ),
+          ),
+
+        ],
       ),
     );
   }
