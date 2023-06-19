@@ -24,156 +24,93 @@ class CycleBlock extends StatelessWidget {
         .size
         .width / baseWidth;
     double ffem = fem * 0.90;
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Container(
-          margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
-          child: SingleChildScrollView(
-            child: DataTable(
-              columns: [
-                DataColumn(
-                  label: Text(
-                    'NO',
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 99.7 * fem, 1 * fem),
+                child: Text(orgID,
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 128.6 * fem, 0 * fem),
+                child: Text(cycle,
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB( 0 * fem, 0 * fem, 99.7 * fem, 0 * fem),
+                child: Text(orgID,
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 128.6 * fem, 0 * fem),
+                child: Text(startDate,
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB( 0 * fem, 0 * fem, 130 * fem, 0 * fem),
+                child: Text(endDate,
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontWeight: FontWeight.normal ,
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              Container(
+                width: 144*fem,
+                height: 28*fem,
+                decoration: BoxDecoration (
+                  border: Border.all(color: Color(0xfffd7e18)),
+                  color: Color(0xfffd7e18),
+                  borderRadius: BorderRadius.circular(7*fem),
+                ),
+                margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                child: Center(
+                  child: Text(status,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'Kanit',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.white,
                       fontSize: 16,
                     ),
                   ),
                 ),
-                DataColumn(
-                  label: Text(
-                    'Cycle',
-                    style: TextStyle(
-                      fontFamily: 'Kanit',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                DataColumn(
-                  label: Text(
-                    'Audit',
-                    style: TextStyle(
-                      fontFamily: 'Kanit',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                DataColumn(
-                  label: Text(
-                    'startDate',
-                    style: TextStyle(
-                      fontFamily: 'Kanit',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                DataColumn(
-                  label: Text(
-                    'endDate',
-                    style: TextStyle(
-                      fontFamily: 'Kanit',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                DataColumn(
-                  label: Text(
-                    'statu',
-                    style: TextStyle(
-                      fontFamily: 'Kanit',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ],
-              rows:  [
-                DataRow(cells: [
-                  DataCell(
-                    Text(
-                      orgID,
-                      style: TextStyle(
-                        fontFamily: 'Kanit',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      cycle,
-                      style: TextStyle(
-                        fontFamily: 'Kanit',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      orgID,
-                      style: TextStyle(
-                        fontFamily: 'Kanit',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      startDate,
-                      style: TextStyle(
-                        fontFamily: 'Kanit',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      endDate,
-                      style: TextStyle(
-                        fontFamily: 'Kanit',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      status,
-                      style: TextStyle(
-                        fontFamily: 'Kanit',
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                ]),
-              ],
-            ),
+              ),
+            ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

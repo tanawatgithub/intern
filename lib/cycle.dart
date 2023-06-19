@@ -6,14 +6,17 @@ import 'domain/cycle.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intern/utils.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
+import 'package:number_pagination/number_pagination.dart';
+
+
 
 class cyclePage extends StatefulWidget {
   final String? txtname;
   final String? txtpassword;
   final String? txtorg;
 
-   const cyclePage(this.txtname, this.txtpassword, this.txtorg);
-
+  const cyclePage(this.txtname, this.txtpassword, this.txtorg);
 
   @override
   _cyclePageState createState() => _cyclePageState();
@@ -33,13 +36,15 @@ class Myclipper extends CustomClipper<Rect> {
 }
 
 class _cyclePageState extends State<cyclePage> {
-
-
-
   List<Cycle> cycles = [];
   DateTime? selectedDate;
+  String dropdownValue = 'Status';
+  DateTime? selectedDateStart;
+  DateTime? selectedDateEnd;
 
-  int currentPage = 0; // หน้าปัจจุบันของข้อมูล
+
+  int numberOfPages = 10;
+  int currentPage = 1;
 
   @override
   void initState() {
@@ -47,24 +52,64 @@ class _cyclePageState extends State<cyclePage> {
     super.initState();
   }
 
-  cyclef() async {
+  void cyclef() async {
     cycles = await CycleService().getCycles();
   }
+  void filterDataByDate1(DateTime startDate) {
+    setState(() {
+      cycles = cycles.where((cycle) {
+        if (cycle.startDate != null) {
+          DateTime cycleStartDate = DateTime.parse(cycle.startDate!);
+          return cycleStartDate.isBefore(startDate) || cycleStartDate.isAtSameMomentAs(startDate);
+        }
+        return false;
+      }).toList();
+    });
+  }
 
-  Future<void> _selectDate(BuildContext context) async {
+  void filterDataByDate(DateTime endDate) {
+    setState(() {
+      cycles = cycles.where((cycle) {
+        if (cycle.endDate != null) {
+          DateTime cycleEndDate = DateTime.parse(cycle.endDate!);
+          return cycleEndDate.isBefore(endDate) || cycleEndDate.isAtSameMomentAs(endDate);
+        }
+        return false;
+      }).toList();
+    });
+  }
+  Future<void> _selectDateStart(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
-      initialDate: selectedDate ?? DateTime.now(),
+      initialDate: selectedDateStart ?? DateTime.now(),
       firstDate: DateTime(2021),
-      lastDate: DateTime(2023),
+      lastDate: DateTime(2024),
     );
 
     if (pickedDate != null) {
       setState(() {
-        selectedDate = pickedDate;
+        selectedDateStart = pickedDate;
+        print(pickedDate);
+        filterDataByDate1(selectedDateStart!);
       });
     }
   }
+  Future<void> _selectDateEnd(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: selectedDateEnd ?? DateTime.now(),
+      firstDate: DateTime(2021),
+      lastDate: DateTime(2024),
+    );
+    if (pickedDate != null) {
+      setState(() {
+        selectedDateEnd = pickedDate;
+        print(pickedDate);
+      });
+      filterDataByDate(selectedDateEnd!);
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -72,9 +117,16 @@ class _cyclePageState extends State<cyclePage> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.90;
 
-    return Container(
-      // color:  Colors.grey,
-      width: double.infinity,
+    var pages = List.generate(
+      numberOfPages,
+          (index) => Center(
+      ),
+    );
+
+    return Scaffold(
+      // color: Color.fromRGBO(217, 217, 217, 0.5),
+      // width: double.infinity,
+      body: Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -197,7 +249,7 @@ class _cyclePageState extends State<cyclePage> {
               color: Color(0xffdc2529),
             ),
           ),
-          //-----------------------------------------------------------------------------------
+          //------------------------------------ //-----------------------------------------------------------------------------------
           SizedBox(
             child: Container(
               padding: EdgeInsets.fromLTRB(
@@ -207,18 +259,18 @@ class _cyclePageState extends State<cyclePage> {
                 color: Colors.white,
               ),
               child: Row(
-                //crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //crossAxisAlignment: CrossAxisAlignment.,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
                     // noB8a (0:109)
                     margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
+                        0 * fem, 0 * fem, 80 * fem, 1 * fem),
                     child: Text(
                       'No.',
                       style: TextStyle(
                         fontFamily: 'Kanit',
-                        fontSize: 25 * ffem,
+                        fontSize: 20 * ffem,
                         fontWeight: FontWeight.w600,
                         height: 0.64 * ffem / fem,
                         letterSpacing: 0.5 * fem,
@@ -229,12 +281,12 @@ class _cyclePageState extends State<cyclePage> {
                   Container(
                     // cycleFu8 (0:115)
                     margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
+                        0 * fem, 0 * fem, 125 * fem, 1 * fem),
                     child: Text(
                       'Cycle',
                       style: TextStyle(
                         fontFamily: 'Kanit',
-                        fontSize: 25 * ffem,
+                        fontSize: 20 * ffem,
                         fontWeight: FontWeight.w600,
                         height: 0.64 * ffem / fem,
                         letterSpacing: 0.5 * fem,
@@ -245,20 +297,20 @@ class _cyclePageState extends State<cyclePage> {
                   Container(
                     // frame5351m6n (0:116)
                     margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
+                        0 * fem, 0 * fem, 50 * fem, 1 * fem),
                     child: Row(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
                           // auditJ6i (0:117)
                           margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 10 * fem, 0 * fem),
+                              0 * fem, 0 * fem, 9 * fem, 0 * fem),
                           child: Text(
                             'Audit',
                             style: TextStyle(
                               fontFamily: 'Kanit',
-                              fontSize: 25 * ffem,
+                              fontSize: 20 * ffem,
                               fontWeight: FontWeight.w600,
                               height: 0.64 * ffem / fem,
                               letterSpacing: 0.5 * fem,
@@ -274,25 +326,46 @@ class _cyclePageState extends State<cyclePage> {
                     margin: EdgeInsets.fromLTRB(
                         0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
                     child: Row(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          // startdateVBC (0:120)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 10 * fem, 0 * fem),
-                          child: Text(
-                            'StartDate',
-                            style: TextStyle(
-                              fontFamily: 'Kanit',
-                              fontSize: 25 * ffem,
-                              fontWeight: FontWeight.w600,
-                              height: 0.64 * ffem / fem,
-                              letterSpacing: 0.5 * fem,
-                              color: Colors.black,
+                        ElevatedButton.icon(
+                          onPressed: () => _selectDateStart(context),
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.all(8),
+                            primary: Colors.orange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
                             ),
                           ),
+                          label: Text(
+                            selectedDateStart != null
+                                ? DateFormat('yyyy-MM-dd').format(selectedDateStart!)
+                                : 'StartDate',
+                            style: TextStyle(
+                              fontFamily: 'Kanit',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          icon: Icon(Icons.calendar_month),
                         ),
+                        // Container(
+                        //   // startdateVBC (0:120)
+                        //   margin: EdgeInsets.fromLTRB(
+                        //       0 * fem, 0 * fem, 10 * fem, 0 * fem),
+                        //   child: Text(
+                        //     'StartDate',
+                        //     style: TextStyle(
+                        //       fontFamily: 'Kanit',
+                        //       fontSize: 20 * ffem,
+                        //       fontWeight: FontWeight.w600,
+                        //       height: 0.64 * ffem / fem,
+                        //       letterSpacing: 0.5 * fem,
+                        //       color: Colors.black,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -301,88 +374,168 @@ class _cyclePageState extends State<cyclePage> {
                     margin: EdgeInsets.fromLTRB(
                         0 * fem, 0 * fem, 154.17 * fem, 1 * fem),
                     child: Row(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          // enddatetDL (0:123)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 9 * fem, 0 * fem),
-                          child: Text(
-                            'EndDate',
-                            style: TextStyle(
-                              fontFamily: 'Kanit',
-                              fontSize: 25 * ffem,
-                              fontWeight: FontWeight.w600,
-                              height: 0.64 * ffem / fem,
-                              letterSpacing: 0.5 * fem,
-                              color: Colors.black,
+                        ElevatedButton.icon(
+                          onPressed: () => _selectDateEnd(context),
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.all(8),
+                            primary: Colors.orange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
                             ),
                           ),
+                          label: Text(
+                            selectedDateEnd != null
+                                ? DateFormat('yyyy-MM-dd').format(selectedDateEnd!)
+                                : 'EndDate',
+                            style: TextStyle(
+                              fontFamily: 'Kanit',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          icon: Icon(Icons.calendar_month),
                         ),
+                        // Container(
+                        //   // enddatetDL (0:123)
+                        //   margin: EdgeInsets.fromLTRB(
+                        //       0 * fem, 0 * fem, 10 * fem, 0 * fem),
+                        //   child: Text(
+                        //     'EndDate',
+                        //     style: TextStyle(
+                        //       fontFamily: 'Kanit',
+                        //       fontSize: 20 * ffem,
+                        //       fontWeight: FontWeight.w600,
+                        //       height: 0.64 * ffem / fem,
+                        //       letterSpacing: 0.5 * fem,
+                        //       color: Colors.black,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
                   Container(
                     // frame5354vQv (0:125)
-                    margin:
-                        EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                    margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
                     child: Row(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
                           // status4X8 (0:126)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 10 * fem, 0 * fem),
-                          child: Text(
-                            'Status',
-                            style: TextStyle(
-                              fontFamily: 'Kanit',
-                              fontSize: 25 * ffem,
-                              fontWeight: FontWeight.w600,
-                              height: 0.64 * ffem / fem,
-                              letterSpacing: 0.5 * fem,
-                              color: Colors.black,
+                          margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                          child: PopupMenuButton<String>(
+                            onSelected: (value) {
+                              setState(() {
+                                dropdownValue = value;
+                              });
+                            },
+                            itemBuilder: (BuildContext context) {
+                              return <PopupMenuEntry<String>>[
+                                PopupMenuItem<String>(
+                                  value: 'ALL',
+                                  child: Text('ALL'),
+                                ),
+                                PopupMenuItem<String>(
+                                  value: 'DONE',
+                                  child: Text('DONE'),
+                                ),
+                                PopupMenuItem<String>(
+                                  value: 'Option 3',
+                                  child: Text('Option 3'),
+                                ),
+                              ];
+                            },
+                            child: Text(
+                              dropdownValue,
+                              style: TextStyle(
+                                fontFamily: 'Kanit',
+                                fontSize: 20 * ffem,
+                                fontWeight: FontWeight.w600,
+                                height: 0.64 * ffem / fem,
+                                letterSpacing: 0.5 * fem,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
+
                 ],
               ),
             ),
           ),
-          SizedBox(
-            child: Container(
-              //data
-              padding:
-                  EdgeInsets.fromLTRB(30 * fem, 26 * fem, 30 * fem, 26 * fem),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 255, 255, 1),
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(2),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              child: Container(
+                // Container to display the data
+                padding:
+                    EdgeInsets.fromLTRB(30 * fem, 26 * fem, 30 * fem, 26 * fem),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(2),
+                  ),
                 ),
-              ),
-              child: Column(
-                children: [
-                  for (var cycle in cycles) ...[
-                    CycleBlock(
-                      orgID: cycle.orgID!,
-                      cycle: cycle.cycle!,
-                      startDate: cycle.startDate!,
-                      endDate: cycle.endDate!,
-                      status: cycle.status!
-                    ),
-                  ]
-                ],
+                child: Column(
+                  children: [
+                    for (var cycle in cycles) ...[
+                      SizedBox(
+                        width: double.infinity,
+                        child: Container(
+                          // Container properties
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          margin: EdgeInsets.symmetric(vertical: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: CycleBlock(
+                              orgID: cycle.orgID!,
+                              cycle: cycle.cycle!,
+                              startDate: cycle.startDate!,
+                              endDate: cycle.endDate!,
+                              status: cycle.status!
+                          ),
+                        ),
+                      ),
+                    ]
+                  ],
+                ),
               ),
             ),
           ),
 
+          // ตัวเลข page ////
+          Expanded(
+            child: Container(
+              child: pages[currentPage],
+            ),
+          ),
+          NumberPagination(
+            pageInit: numberOfPages,
+            colorSub: Colors.white,
+            colorPrimary: Colors.orange,
+            //numberPages: numberOfPages,
+            pageTotal: 9,
+            //currentPage: currentPage,
+            onPageChanged: (index) {
+              setState(() {
+                currentPage = index;
+              });
+            },
+          ),
         ],
+      ),
       ),
     );
   }

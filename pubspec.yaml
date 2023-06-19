@@ -36,6 +36,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_screenutil: ^5.6.0
   dropdown_button2: ^1.4.0
+  http: ^0.13.4
+  google_fonts: 2.2.0
+  provider: ^4.3.2
+  intl: ^0.17.0
+  number_pagination: ^0.0.3+2
+  number_paginator: ^0.2.3
+  flutter_datetime_picker: ^1.5.0
 
 
 dev_dependencies:
@@ -67,7 +74,15 @@ flutter:
     - assets/images/bg1.png
     - assets/images/Zeenlogo.png
     - assets/images/Zeenlogo1.png
-    - assets/images/Zebra .png
+    - assets/images/Zebra 1.png
+    - assets/images/arrow-right.png
+    - assets/images/arrow-right-4Bg.png
+    - assets/images/mask-group.png
+    - assets/images/vector.png
+    - assets/images/vector-8KY.png
+    - assets/images/vector-EAi.png
+    - assets/images/vector-Zgr.png
+    - assets/images/zeenapplogo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

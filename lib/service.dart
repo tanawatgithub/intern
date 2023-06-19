@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:js_interop';
 
 import 'package:http/http.dart' as http;
 import 'domain/cycle.dart';
@@ -9,11 +8,10 @@ import 'dart:developer';
 
 class CycleService{
   Future<List<Cycle>> getCycles() async{
-    String url = "http://192.168.86.52:8083/training-ws/cycle/allCycles?org=FMGT";
+    String url = "https://648b1e6917f1536d65ea68a8.mockapi.io/cycle";
     final queryParameters = {
-      'org': 'FMGT',
+      'org': '',
     };
-    // Uri uri = Uri.http('192.168.86.52:8083',"/training-ws/cycle/allCycles",queryParameters);
     // print(uri);
     try{
       final response = await http.get(Uri.parse(url));
@@ -28,7 +26,7 @@ class CycleService{
       }
       else
       {
-        throw Exception("Error Ocurs");
+        throw Exception("Error Occur");
       }
     }catch(e){
       print("xxxx");

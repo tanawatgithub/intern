@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:intern/domain/user_domain.dart';
 import 'package:intern/login1.dart';
 
 class LoginHomePage extends StatelessWidget {
-  //const LoginPage({ Key? key }) : super(key: key);
 
-  final String? txtName;
-  final String? txtPassword;
-  final String? txtOrg;
+
+  //const LoginPage({ Key? key }) : super(key: key);
+      final String? txtName;
+      final String? txtOrg;
+      final String? txtPassword;
+  //final UserDomain user;
   
-  const LoginHomePage(this.txtName,this.txtPassword, this.txtOrg);
+    const LoginHomePage(this.txtName,this.txtOrg,this.txtPassword);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +21,8 @@ class LoginHomePage extends StatelessWidget {
           children: [
             Text('ยินดีต้อนรับ'),
             Text('คุณ : $txtName'),
-            Text('Password ของคุณ คือ : $txtPassword'),
-            Text('ORg คือ: $txtOrg')
+           Text('Org คือ: $txtOrg'),
+            Text('Password คือ $txtPassword')
           ],
         ),
       ) ,

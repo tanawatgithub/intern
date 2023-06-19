@@ -2,87 +2,66 @@ import 'package:flutter/material.dart';
 import 'package:intern/loginpage1.dart';
 
 class forpassword extends StatefulWidget {
+  const forpassword({Key? key}) : super(key: key);
+
   @override
   State<forpassword> createState() => _forpasswordState();
 }
 
 class _forpasswordState extends State<forpassword> {
-
   final TextEditingController orgcon = TextEditingController();
   final TextEditingController namecon = TextEditingController();
+  //final TextEditingController passwordcon = TextEditingController();
 
   bool obscureText = true;
+  Widget? _messageWidget;
+
 
   void Send(BuildContext context) {
     String name = namecon.text.trim();
     String org = orgcon.text.trim();
 
-    if (name.isNotEmpty && org.isNotEmpty) {
-      if (name == 'admin' && org == 'Zeen') {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginHomePage(orgcon.text,namecon.text,namecon.text)
-          ),
-        );
-      } else {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('ผิดพลาด'),
-              content: Text('ชื่อผู้ใช้งานไม่ถูกต้อง'),
-              actions: [
-                TextButton(
-                  child: Text('ตกลง'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      }
+    if (name.isEmpty || org.isEmpty) {
+      setState(() {
+        _messageWidget = buildMessageWidget('กรุณากรอก ชื่อองค์กร ชื่อผู้ใช้ หรือ รหัสผ่าน', Colors.red);
+      });
+    } else if (name != 'admin' ||  org != 'Zeen') {
+      setState(() {
+        _messageWidget = buildMessageWidget('ชื่อองค์กร ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง', Colors.red);
+      });
     } else {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('ผิดพลาด'),
-            content: Text('กรุณากรอกข้อมูลผู้ใช้งาน'),
-            actions: [
-              TextButton(
-                child: Text('ตกลง'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
+      setState(() {
+        _messageWidget = null;
+      });
+
     }
   }
+
+  Widget buildMessageWidget(String message, Color color) {
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text(
+            message,
+            style: TextStyle(
+              color: color,
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          'ลืมรหัสผ่าน/ปลดล็อค',
-          style: TextStyle(
-            fontFamily: 'Kanit',
-            fontSize: 18,
-            color: Colors.orange,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/bg1.png'),
                 fit: BoxFit.cover,
@@ -92,32 +71,35 @@ class _forpasswordState extends State<forpassword> {
               children: [
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 60,
                       horizontal: 20,
                     ),
                     child: Container(
+                      constraints: BoxConstraints(maxWidth: 667, maxHeight: 870),
                       width: 667,
-                      height: 835,
+                      // height: 835,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(255, 255, 255, 1),
+                        color: const Color.fromRGBO(255, 255, 255, 1),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(color: Colors.orange),
                       ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              SizedBox(
-                                width: constraints.maxWidth * 0.6,
-                                height: constraints.maxHeight * 0.3,
-                                child: Image.asset(
-                                  'assets/images/Zeenlogo.png',
+                              Padding(
+                                padding:  EdgeInsets.all(30.0),
+                                child: SizedBox(
+                                  width: constraints.maxWidth * 0.6,
+                                  height: constraints.maxHeight * 0.3,
+                                  child: Image.asset(
+                                    'assets/images/Zeenlogo.png',
+                                  ),
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 30),
                               Text(
                                 'ลืมรหัสผ่าน/ปลดล็อค',
                                 style: TextStyle(
@@ -126,6 +108,7 @@ class _forpasswordState extends State<forpassword> {
                                   color: Colors.orange,
                                 ),
                               ),
+                              if (_messageWidget != null) _messageWidget!,
                               SizedBox(height: 10),
                               Padding(
                                 padding: EdgeInsets.symmetric(
@@ -143,7 +126,6 @@ class _forpasswordState extends State<forpassword> {
                                       border: OutlineInputBorder(),
                                       labelText: 'องค์กร',
                                       labelStyle: TextStyle(
-                                        fontSize: 18,
                                         color: Colors.orange,
                                       ),
                                       prefixIcon: Icon(
@@ -189,7 +171,6 @@ class _forpasswordState extends State<forpassword> {
                                       border: OutlineInputBorder(),
                                       labelText: 'ชื่อผู้ใช้',
                                       labelStyle: TextStyle(
-                                        fontSize: 17.5,
                                         color: Colors.orange,
                                       ),
                                       prefixIcon: Icon(
@@ -223,6 +204,38 @@ class _forpasswordState extends State<forpassword> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        },// เพิ่มโค้ดเพื่อนำไปหน้า loginpage หรือเพจที่ต้องการ
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color.fromRGBO(167, 167, 167, 1),
+                                      onPrimary: Colors.white,
+                                      onSurface: Color.fromRGBO(105, 122, 132, 1)
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: 9,
+                                          height: 50,
+                                        ),
+                                        Icon(
+                                          Icons.arrow_back,
+                                          color: Colors.white,
+                                        ),
+                                        Text(
+                                          'ย้อนกลับ',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(width: 10), // ระยะห่างประมาณ 10 หน่วย
+                                  ElevatedButton(
                                     onPressed: () => Send(context),
                                     style: ElevatedButton.styleFrom(
                                       primary: Colors.orange,
@@ -230,39 +243,26 @@ class _forpasswordState extends State<forpassword> {
                                       onSurface: Colors.orange,
                                     ),
                                     child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
                                           width: 9,
                                           height: 50,
                                         ),
+
                                         Text(
-                                          'ส่ง ',
+                                          'ส่ง',
                                           style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_sharp,
+                                          color: Colors.white,
                                         ),
                                       ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        'version: 1.0.0.Beta    ',
-                                        style: TextStyle(
-                                          fontFamily: 'Kanit',
-                                          fontSize: 16,
-                                          color: Colors.orange,
-                                        ),
-                                      )
-                                    ],
                                   ),
                                 ],
                               )
