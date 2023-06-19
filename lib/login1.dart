@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intern/service.dart';
+import 'package:intern/cycle.dart';
+import 'package:intern/loginpage1.dart';
 import 'package:intern/testp.dart';
 import 'package:intern/forgetpassword.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'cycle.dart';
-import 'domain/cycle.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -23,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget? _messageWidget;
 
 
-  void login(BuildContext context) async {
+  void login(BuildContext context) {
     String name = namecon.text.trim();
     String password = passwordcon.text.trim();
     String org = orgcon.text.trim();
@@ -44,16 +42,6 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         _messageWidget = null;
       });
-
-      //call cycle
-
-
-            // List<Cycle> a = [];
-            // CycleService().getCycles().then((value) {
-            //   List<Cycle> a= value;
-            //   print('c:'+a.toString());
-            // });
-            // print('b:'+a.toString());
 
       Navigator.push(
         context,
@@ -166,12 +154,12 @@ class _LoginPageState extends State<LoginPage> {
                                         Icons.location_city_rounded,
                                         color: Colors.orange,
                                       ),
-                                      focusedBorder: const OutlineInputBorder(
+                                      focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.orange,
                                         ),
                                       ),
-                                      enabledBorder: const OutlineInputBorder(
+                                      enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.orange,
                                         ),
@@ -180,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                                         onPressed: () {
                                           orgcon.clear();
                                         },
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.cancel,
                                         ),
                                       ),
