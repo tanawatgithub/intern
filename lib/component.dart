@@ -90,7 +90,7 @@ class CycleBlock extends StatelessWidget {
                 ),
                 DataColumn(
                   label: Text(
-                    'status',
+                    'statu',
                     style: TextStyle(
                       fontFamily: 'Kanit',
                       fontWeight: FontWeight.bold,
@@ -164,7 +164,7 @@ class CycleBlock extends StatelessWidget {
                         fontFamily: 'Kanit',
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 1,
+                        fontSize: 16,
                       ),
                     ),
                   ),
