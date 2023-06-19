@@ -19,7 +19,7 @@ class CycleBlock extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(orgID , style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
         Text(cycle, style: TextStyle(fontFamily: 'Kanit' , fontWeight: FontWeight.bold  ),),
