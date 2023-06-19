@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CycleBlock extends StatelessWidget {
+  final int index;
   final String orgID;
   final String cycle;
   final String startDate;
@@ -9,6 +10,7 @@ class CycleBlock extends StatelessWidget {
   final String status;
 
   CycleBlock({
+    required this.index,
     required this.orgID,
     required this.cycle,
     required this.startDate,
@@ -33,7 +35,7 @@ class CycleBlock extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 99.7 * fem, 1 * fem),
-                child: Text(orgID,
+                child: Text(index.toString(),
                   style: TextStyle(
                     fontFamily: 'Kanit',
                     fontWeight: FontWeight.bold,
@@ -90,8 +92,8 @@ class CycleBlock extends StatelessWidget {
                 width: 144*fem,
                 height: 28*fem,
                 decoration: BoxDecoration (
-                  border: Border.all(color: Color(0xfffd7e18)),
-                  color: Color(0xfffd7e18),
+                  border: Border.all(color: Colors.green,),
+                  color: Colors.green,
                   borderRadius: BorderRadius.circular(7*fem),
                 ),
                 margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
@@ -101,7 +103,7 @@ class CycleBlock extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: 'Kanit',
                       fontWeight: FontWeight.normal,
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 16,
                     ),
                   ),

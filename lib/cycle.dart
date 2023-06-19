@@ -22,7 +22,7 @@ class cyclePage extends StatefulWidget {
   _cyclePageState createState() => _cyclePageState();
 }
 
-String dropdownValue = 'Option 1';
+//String dropdownValue = 'Option 1';
 
 class Myclipper extends CustomClipper<Rect> {
   Rect getClip(Size size) {
@@ -78,6 +78,7 @@ class _cyclePageState extends State<cyclePage> {
       }).toList();
     });
   }
+
   Future<void> _selectDateStart(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -110,6 +111,19 @@ class _cyclePageState extends State<cyclePage> {
     }
   }
 
+  void filterDataByStatus(String status) async{
+    setState(() {
+      if (status == "ALL") {
+
+
+        // Show all statuses
+        cycles = cycles.toList();
+      }else {
+        // Filter by the selected status
+        cycles = cycles.where((cycle) => cycle.status == status).toList() ;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -428,10 +442,8 @@ class _cyclePageState extends State<cyclePage> {
                           // status4X8 (0:126)
                           margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
                           child: PopupMenuButton<String>(
-                            onSelected: (value) {
-                              setState(() {
-                                dropdownValue = value;
-                              });
+                            onSelected: (String status) {
+                              filterDataByStatus(status);
                             },
                             itemBuilder: (BuildContext context) {
                               return <PopupMenuEntry<String>>[
@@ -444,8 +456,12 @@ class _cyclePageState extends State<cyclePage> {
                                   child: Text('DONE'),
                                 ),
                                 PopupMenuItem<String>(
-                                  value: 'Option 3',
-                                  child: Text('Option 3'),
+                                  value: 'CANCEL',
+                                  child: Text('CANCEL'),
+                                ),
+                                PopupMenuItem<String>(
+                                  value: 'IN_PROGRESS',
+                                  child: Text('IN_PROGRESS'),
                                 ),
                               ];
                             },
@@ -486,7 +502,7 @@ class _cyclePageState extends State<cyclePage> {
                 ),
                 child: Column(
                   children: [
-                    for (var cycle in cycles) ...[
+                    for (var i = 0; i < cycles.length; i ++) ...[
                       SizedBox(
                         width: double.infinity,
                         child: Container(
@@ -500,11 +516,12 @@ class _cyclePageState extends State<cyclePage> {
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: CycleBlock(
-                              orgID: cycle.orgID!,
-                              cycle: cycle.cycle!,
-                              startDate: cycle.startDate!,
-                              endDate: cycle.endDate!,
-                              status: cycle.status!
+                              orgID: cycles[i].orgID!,
+                              cycle: cycles[i].cycle!,
+                              startDate: cycles[i].startDate!,
+                              endDate: cycles[i].endDate!,
+                              status: cycles[i].status!,
+                              index: i+1,
                           ),
                         ),
                       ),
