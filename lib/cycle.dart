@@ -257,14 +257,14 @@ class _cyclePageState extends State<cyclePage> {
               color: Color(0xffdc2529),
             ),
           ),
-          //------------------------------------ //-----------------------------------------------------------------------------------
+          //------------------------------------ //-----------------------------------------------------------------------------------//
           SizedBox(
             child: Column(
               children: [
                 Container(
                   padding: EdgeInsets.fromLTRB(
-                      20 * fem, 22 * fem, 42.17 * fem, 21 * fem),
-                  width: double.infinity,
+                      30 * fem, 22 * fem, 42.17 * fem, 21 * fem),
+                  //width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
                   ),
@@ -276,15 +276,18 @@ class _cyclePageState extends State<cyclePage> {
                         // noB8a (0:109)
                         margin: EdgeInsets.fromLTRB(
                             0 * fem, 0 * fem, 80 * fem, 1 * fem),
-                        child: Text(
-                          'No.',
-                          style: TextStyle(
-                            fontFamily: 'Kanit',
-                            fontSize: 20 * ffem,
-                            fontWeight: FontWeight.w600,
-                            height: 0.64 * ffem / fem,
-                            letterSpacing: 0.5 * fem,
-                            color: Colors.black,
+                        child: Expanded(
+                          flex: 1,
+                          child: Text(
+                            'No.',
+                            style: TextStyle(
+                              fontFamily: 'Kanit',
+                              fontSize: 20 * ffem,
+                              fontWeight: FontWeight.w600,
+                              height: 0.64 * ffem / fem,
+                              letterSpacing: 0.5 * fem,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ),
@@ -292,15 +295,18 @@ class _cyclePageState extends State<cyclePage> {
                         // cycleFu8 (0:115)
                         margin: EdgeInsets.fromLTRB(
                             0 * fem, 0 * fem, 125 * fem, 1 * fem),
-                        child: Text(
-                          'Cycle',
-                          style: TextStyle(
-                            fontFamily: 'Kanit',
-                            fontSize: 20 * ffem,
-                            fontWeight: FontWeight.w600,
-                            height: 0.64 * ffem / fem,
-                            letterSpacing: 0.5 * fem,
-                            color: Colors.black,
+                        child: Expanded(
+                          flex: 2,
+                          child: Text(
+                            'Cycle',
+                            style: TextStyle(
+                              fontFamily: 'Kanit',
+                              fontSize: 20 * ffem,
+                              fontWeight: FontWeight.w600,
+                              height: 0.64 * ffem / fem,
+                              letterSpacing: 0.5 * fem,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                       ),
@@ -316,15 +322,18 @@ class _cyclePageState extends State<cyclePage> {
                               // auditJ6i (0:117)
                               margin: EdgeInsets.fromLTRB(
                                   0 * fem, 0 * fem, 9 * fem, 0 * fem),
-                              child: Text(
-                                'Audit',
-                                style: TextStyle(
-                                  fontFamily: 'Kanit',
-                                  fontSize: 20 * ffem,
-                                  fontWeight: FontWeight.w600,
-                                  height: 0.64 * ffem / fem,
-                                  letterSpacing: 0.5 * fem,
-                                  color: Colors.black,
+                              child: Expanded(
+                                flex: 3,
+                                child: Text(
+                                  'Audit',
+                                  style: TextStyle(
+                                    fontFamily: 'Kanit',
+                                    fontSize: 20 * ffem,
+                                    fontWeight: FontWeight.w600,
+                                    height: 0.64 * ffem / fem,
+                                    letterSpacing: 0.5 * fem,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
                             ),
@@ -335,125 +344,134 @@ class _cyclePageState extends State<cyclePage> {
                         // frame5352kDc (0:119)
                         margin: EdgeInsets.fromLTRB(
                             0 * fem, 0 * fem, 99.17 * fem, 1 * fem),
-                        child: Row(
-                          //crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ElevatedButton.icon(
-                              onPressed: () => _selectDateStart(context),
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.all(8),
-                                primary: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
+                        child: Expanded(
+                          flex: 3,
+                          child: Row(
+                            //crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton.icon(
+                                onPressed: () => _selectDateStart(context),
+                                style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.all(8),
+                                  primary: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
                                 ),
-                              ),
-                              label: Text(
-                                selectedDateStart != null
-                                    ? DateFormat('yyyy-MM-dd')
-                                    .format(selectedDateStart!)
-                                    : 'StartDate',
-                                style: TextStyle(
-                                  fontFamily: 'Kanit',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.black,
+                                label: Text(
+                                  selectedDateStart != null
+                                      ? DateFormat('yyyy-MM-dd')
+                                      .format(selectedDateStart!)
+                                      : 'StartDate',
+                                  style: TextStyle(
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),
                                 ),
+                                icon: Icon(Icons.calendar_month , color: Colors.black),
                               ),
-                              icon: Icon(Icons.calendar_month),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Container(
                         // frame5353wot (0:122)
                         margin: EdgeInsets.fromLTRB(
                             0 * fem, 0 * fem, 154.17 * fem, 1 * fem),
-                        child: Row(
-                          //crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ElevatedButton.icon(
-                              onPressed: () => _selectDateEnd(context),
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.all(8),
-                                primary: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
+                        child: Expanded(
+                          flex: 3,
+                          child: Row(
+                            //crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton.icon(
+                                onPressed: () => _selectDateEnd(context),
+                                style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.all(8),
+                                  primary: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
                                 ),
-                              ),
-                              label: Text(
-                                selectedDateEnd != null
-                                    ? DateFormat('yyyy-MM-dd')
-                                    .format(selectedDateEnd!)
-                                    : 'EndDate',
-                                style: TextStyle(
-                                  fontFamily: 'Kanit',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.black,
+                                label: Text(
+                                  selectedDateEnd != null
+                                      ? DateFormat('yyyy-MM-dd')
+                                      .format(selectedDateEnd!)
+                                      : 'EndDate',
+                                  style: TextStyle(
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),
                                 ),
+                                icon: Icon(Icons.calendar_month),
                               ),
-                              icon: Icon(Icons.calendar_month),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Container(
                         // frame5354vQv (0:125)
                         margin: EdgeInsets.fromLTRB(
                             0 * fem, 1 * fem, 0 * fem, 0 * fem),
-                        child: Row(
-                          //crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              child: Theme(
-                                data: Theme.of(context).copyWith(
-                                  highlightColor: Colors
-                                      .orange, // Set the highlight color here
-                                ),
-                                // status4X8 (0:126)
-                                //margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
-                                child: PopupMenuButton<String>(
-                                  onSelected: (String status) {
-                                    filterDataByStatus(status);
-                                  },
-                                  itemBuilder: (BuildContext context) {
-                                    return <PopupMenuEntry<String>>[
-                                      PopupMenuItem<String>(
-                                        value: 'ALL',
-                                        child: Text('ALL'),
+                        child: Expanded(
+                          flex: 2,
+                          child: Row(
+                            //crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                child: Theme(
+                                  data: Theme.of(context).copyWith(
+                                    highlightColor: Colors
+                                        .orange, // Set the highlight color here
+                                  ),
+                                  // status4X8 (0:126)
+                                  //margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                                  child: PopupMenuButton<String>(
+                                    onSelected: (String status) {
+                                      filterDataByStatus(status);
+                                    },
+                                    itemBuilder: (BuildContext context) {
+                                      return <PopupMenuEntry<String>>[
+                                        PopupMenuItem<String>(
+                                          value: 'ALL',
+                                          child: Text('ALL'),
+                                        ),
+                                        PopupMenuItem<String>(
+                                          value: 'DONE',
+                                          child: Text('DONE'),
+                                        ),
+                                        PopupMenuItem<String>(
+                                          value: 'CANCEL',
+                                          child: Text('CANCEL'),
+                                        ),
+                                        PopupMenuItem<String>(
+                                          value: 'IN_PROGRESS',
+                                          child: Text('IN_PROGRESS'),
+                                        ),
+                                      ];
+                                    },
+                                    child: Text(
+                                      dropdownValue,
+                                      style: TextStyle(
+                                        fontFamily: 'Kanit',
+                                        fontSize: 20 * ffem,
+                                        fontWeight: FontWeight.w600,
+                                        height: 0.64 * ffem / fem,
+                                        letterSpacing: 0.5 * fem,
+                                        color: Colors.black,
                                       ),
-                                      PopupMenuItem<String>(
-                                        value: 'DONE',
-                                        child: Text('DONE'),
-                                      ),
-                                      PopupMenuItem<String>(
-                                        value: 'CANCEL',
-                                        child: Text('CANCEL'),
-                                      ),
-                                      PopupMenuItem<String>(
-                                        value: 'IN_PROGRESS',
-                                        child: Text('IN_PROGRESS'),
-                                      ),
-                                    ];
-                                  },
-                                  child: Text(
-                                    dropdownValue,
-                                    style: TextStyle(
-                                      fontFamily: 'Kanit',
-                                      fontSize: 20 * ffem,
-                                      fontWeight: FontWeight.w600,
-                                      height: 0.64 * ffem / fem,
-                                      letterSpacing: 0.5 * fem,
-                                      color: Colors.black,
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],

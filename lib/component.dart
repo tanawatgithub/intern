@@ -48,19 +48,17 @@ class CycleBlock extends StatelessWidget {
             children: [
               Expanded(
                 flex: 1,
-                child: Center(
-                  child: Text(index.toString(),
-                    style: TextStyle(
-                      fontFamily: 'Kanit',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
+                child: Text(index.toString(),
+                  style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 16,
                   ),
                 ),
               ),
               Expanded(
-                flex: 4,
+                flex: 2,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(cycle,
@@ -74,7 +72,7 @@ class CycleBlock extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Text(org,
                   style: TextStyle(
                     fontFamily: 'Kanit',
@@ -96,7 +94,7 @@ class CycleBlock extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: Text(endDate,
                   style: TextStyle(
                     fontFamily: 'Kanit',
@@ -106,8 +104,7 @@ class CycleBlock extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                flex: 3,
+              Container(
                 child: Container(
                   width: 144 * fem,
                   height: 28 * fem,
@@ -118,15 +115,13 @@ class CycleBlock extends StatelessWidget {
                   ),
                   margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
                   child:
-                      Center(
-                        child: Text(status,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'Kanit',
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
+                      Text(status,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Kanit',
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white,
+                          fontSize: 16,
                         ),
                       ),
                   ),
