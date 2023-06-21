@@ -358,7 +358,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      const Text('version: 1.0.0.Beta   ',
+                                      const Text('version: 1.0.0.Beta    ',
                                         style: TextStyle(
                                           fontFamily: 'Kani',
                                           fontSize: 1,
