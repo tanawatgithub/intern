@@ -343,7 +343,7 @@ class _cyclePageState extends State<cyclePage> {
                               onPressed: () => _selectDateStart(context),
                               style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.all(8),
-                                primary: Colors.orange,
+                                primary: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(4),
                                 ),
@@ -357,6 +357,7 @@ class _cyclePageState extends State<cyclePage> {
                                   fontFamily: 'Kanit',
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
+                                  color: Colors.black,
                                 ),
                               ),
                               icon: Icon(Icons.calendar_month),
@@ -376,7 +377,7 @@ class _cyclePageState extends State<cyclePage> {
                               onPressed: () => _selectDateEnd(context),
                               style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.all(8),
-                                primary: Colors.orange,
+                                primary: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(4),
                                 ),
@@ -390,6 +391,7 @@ class _cyclePageState extends State<cyclePage> {
                                   fontFamily: 'Kanit',
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
+                                  color: Colors.black,
                                 ),
                               ),
                               icon: Icon(Icons.calendar_month),

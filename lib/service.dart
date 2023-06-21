@@ -29,7 +29,7 @@ class CycleService{
         throw Exception("Error Occur");
       }
     }catch(e){
-      print("xxxx");
+      print("xxxxxxxx");
       print(e.toString());
     }
     return [];
