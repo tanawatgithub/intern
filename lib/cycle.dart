@@ -432,7 +432,7 @@ class _cyclePageState extends State<cyclePage> {
                                         child: Text('CANCEL'),
                                       ),
                                       PopupMenuItem<String>(
-                                        value: 'IN_PROGRESS',
+                                        value: 'IN_PROGRESS' ,
                                         child: Text('IN_PROGRESS'),
                                       ),
                                     ];

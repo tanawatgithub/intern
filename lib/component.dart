@@ -122,14 +122,13 @@ class CycleBlock extends StatelessWidget {
                         child: Text(status,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontFamily: 'Kanit',
+                            fontFamily: 'Kani',
                             fontWeight: FontWeight.normal,
                             color: Colors.white,
                             fontSize: 16,
                           ),
                         ),
                       ),
-
                   ),
               ),
             ],
