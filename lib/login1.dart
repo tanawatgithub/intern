@@ -92,7 +92,6 @@ class _LoginPageState extends State<LoginPage> {
                       horizontal: 20,
                     ),
                     child: Container(
-                      constraints: BoxConstraints(maxWidth: 667, maxHeight: 870),
                       width: 667,
                       // height: 835,
                       decoration: BoxDecoration(
@@ -106,19 +105,16 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Padding(
-                                padding:  EdgeInsets.all(30.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
                                 child: SizedBox(
-                                  width: constraints.maxWidth * 0.6,
-                                  height: constraints.maxHeight * 0.3,
+                                  width: 300,
+                                  height: 300,
                                   child: Image.asset(
                                     'assets/images/Zeenlogo.png',
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: const SizedBox(width: 0.6 , height: 0.3,),
-                              ),
+                              const SizedBox(width: 0.6 , height: 0.3,),
                               const Text(
                                 'เข้าสู่ระบบ',
                                 style: TextStyle(
@@ -135,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                                   horizontal: 20,
                                 ),
                                 child: SizedBox(
-                                  width: 530,
+                                  width: double.infinity,
                                   child: TextField(
                                     style: Theme
                                         .of(context)
@@ -145,21 +141,21 @@ class _LoginPageState extends State<LoginPage> {
                                     controller: orgcon,
                                     keyboardType: TextInputType.name,
                                     decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
+                                      border: const OutlineInputBorder(),
                                       labelText: 'องค์กร',
-                                      labelStyle: TextStyle(
+                                      labelStyle: const TextStyle(
                                         color: Colors.orange,
                                       ),
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.location_city_rounded,
                                         color: Colors.orange,
                                       ),
-                                      focusedBorder: OutlineInputBorder(
+                                      focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.orange,
                                         ),
                                       ),
-                                      enabledBorder: OutlineInputBorder(
+                                      enabledBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.orange,
                                         ),
@@ -168,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                                         onPressed: () {
                                           orgcon.clear();
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.cancel,
                                         ),
                                       ),
@@ -181,8 +177,8 @@ class _LoginPageState extends State<LoginPage> {
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 20,
                                 ),
-                                child: Container(
-                                  width: 530,
+                                child: SizedBox(
+                                  width: double.infinity,
                                   child: TextField(
                                     style: Theme
                                         .of(context)
@@ -223,11 +219,11 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Container(
-                                  width: 530,
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                child: SizedBox(
+                                  width: double.infinity,
                                   child: TextField(
                                     style: Theme
                                         .of(context)
@@ -238,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
                                     keyboardType: TextInputType.phone,
                                     obscureText: obscureText,
                                     decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
+                                      border: const OutlineInputBorder(),
                                       labelText: 'รหัสผ่าน',
                                       labelStyle: const TextStyle(
                                         color: Colors.orange,

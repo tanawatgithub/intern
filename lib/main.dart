@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:intern/login1.dart';
+import 'package:intern/login1.dart';
 // import 'package:intern/forgetpassword.dart';
 import 'package:intern/cycle.dart';
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: cyclePage('admin','1234','Zeen'),
-        //home: MyScreen(),
+        //home: LoginPage(),
       ),
     );
   }
