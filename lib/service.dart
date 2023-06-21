@@ -8,7 +8,7 @@ import 'dart:developer';
 
 class CycleService{
   Future<List<Cycle>> getCycles() async{
-    String url = "http://192.168.86.57:8083/training-ws/cycle/allCycles?org=FMGT";
+    String url = "https://648b1e6917f1536d65ea68a8.mockapi.io/cycle";
     final queryParameters = {
       'org': '',
     };

@@ -63,7 +63,7 @@ class CycleBlock extends StatelessWidget {
                 flex: 4,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(cycle +cycle+cycle+cycle+cycle,
+                  child: Text(cycle,
                     style: TextStyle(
                       fontFamily: 'Kanit',
                       fontWeight: FontWeight.bold,

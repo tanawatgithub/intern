@@ -20,7 +20,7 @@ class Cycle{
   {
     return Cycle(
      //numberID: json['numberID'],
-      orgID: json['org'],
+      orgID: json['orgID'],
       cycle: json['cycle'],
       startDate: json['startDate'],
       endDate: json['endDate'],
