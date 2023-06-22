@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intern/login1.dart';
-// import 'package:intern/forgetpassword.dart';
+import 'package:intern/forgetpassword.dart';
 import 'package:intern/cycle.dart';
 
 import 'datarow.dart';
@@ -27,15 +27,11 @@ class MyApp extends StatelessWidget {
           ),
           primarySwatch: Colors.blue,
         ),
-        home: cyclePage('admin','1234','Zeen'),
-        //home: LoginPage(),
+        //home: cyclePage('admin','1234','Zeen'),
+        home: LoginPage(),
+        //home: forpassword(),
       ),
     );
   }
 }
-
-// debugShowCheckedModeBanner: false,
-
-// ),
-// home: cyclepage('admin','1234','Zeen'),
 

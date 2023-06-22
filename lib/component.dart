@@ -44,23 +44,28 @@ class CycleBlock extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                flex: 1,
-                child: Text(index.toString(),
-                  style: TextStyle(
-                    fontFamily: 'Kanit',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 16,
+              Container(
+                margin: EdgeInsets.fromLTRB(
+                    35 * fem, 0 * fem, 50 * fem, 0 * fem),
+                child: Expanded(
+                  flex: 1,
+                  child: Text(index.toString(),
+                    style: TextStyle(
+                      fontFamily: 'Kanit',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+              Container(
+                margin: EdgeInsets.fromLTRB(
+                    5 * fem, 0 * fem, 150 * fem, 1 * fem),
+                child: Expanded(
+                  flex: 1,
                   child: Text(cycle,
                     style: TextStyle(
                       fontFamily: 'Kanit',
@@ -71,36 +76,48 @@ class CycleBlock extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Text(org,
-                  style: TextStyle(
-                    fontFamily: 'Kanit',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 16,
+              Container(
+                margin: EdgeInsets.fromLTRB(
+                    0 * fem, 0 * fem, 100 * fem, 1 * fem),
+                child: Expanded(
+                  flex: 2,
+                  child: Text(org,
+                    style: TextStyle(
+                      fontFamily: 'Kanit',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
-              Expanded(
-                flex: 2,
-                child: Text(startDate,
-                  style: TextStyle(
-                    fontFamily: 'Kanit',
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black,
-                    fontSize: 16,
+              Container(
+                margin: EdgeInsets.fromLTRB(
+                    60 * fem, 0 * fem, 100 * fem, 1 * fem),
+                child: Expanded(
+                  flex: 1,
+                  child: Text(startDate,
+                    style: TextStyle(
+                      fontFamily: 'Kanit',
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
-              Expanded(
-                flex: 3,
-                child: Text(endDate,
-                  style: TextStyle(
-                    fontFamily: 'Kanit',
-                    fontWeight: FontWeight.normal ,
-                    color: Colors.black,
-                    fontSize: 16,
+              Container(
+                margin: EdgeInsets.fromLTRB(
+                    60 * fem, 0 * fem, 150 * fem, 0 * fem),
+                child: Expanded(
+                  flex: 1,
+                  child: Text(endDate,
+                    style: TextStyle(
+                      fontFamily: 'Kanit',
+                      fontWeight: FontWeight.normal ,
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
@@ -113,17 +130,20 @@ class CycleBlock extends StatelessWidget {
                     color: getStatusColor(),
                     borderRadius: BorderRadius.circular(7 * fem),
                   ),
-                  margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                  margin: EdgeInsets.fromLTRB( 0 * fem, 0 * fem, 30 * fem, 0 * fem),
                   child:
-                      Text(status,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'Kanit',
-                          fontWeight: FontWeight.normal,
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
+                  Expanded(
+                    flex: 1,
+                    child: Text(status,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Kanit',
+                        fontWeight: FontWeight.normal,
+                        color: Colors.white,
+                        fontSize: 16,
                       ),
+                    ),
+                  ),
                   ),
               ),
             ],

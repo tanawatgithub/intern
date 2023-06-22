@@ -112,7 +112,7 @@ class _forpasswordState extends State<forpassword> {
                               height: 10,
                               ),
                               const Text(
-                                'ลืมรหัสผ่าน/ปลดล็อค ',
+                                'ลืมรหัสผ่าน/ปลดล็อค',
                                 style: TextStyle(
                                   fontFamily: 'Kanit',
                                   fontSize: 30,

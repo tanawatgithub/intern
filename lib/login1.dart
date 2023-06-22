@@ -317,7 +317,7 @@ class _LoginPageState extends State<LoginPage> {
                                       children: const [
                                         SizedBox(
                                           width: 9,
-                                          height: 50.0,
+                                          height: 50,
                                         ),
                                         Text('เข้าสู่ระบบ', style: TextStyle(
                                             fontSize: 20,
