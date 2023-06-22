@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      vertical: 60,
+                      vertical: 30,
                       horizontal: 20,
                     ),
                     child: Container(
@@ -286,7 +286,7 @@ class _LoginPageState extends State<LoginPage> {
                                           );
                                         },
                                         child: const Text(
-                                          'ลืมรหัสผ่าน / ปลดล็อค                   ',
+                                          'ลืมรหัสผ่าน / ปลดล็อค       ',
                                           style: TextStyle(
                                             fontFamily: 'Kanit',
                                             fontSize: 16,
@@ -331,44 +331,45 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 20),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => testp()
-                                    ),
-                                  );
-                                },
-                                child: const Text(
-                                  'เข้าสู่ระบบด้วยระบบ PIN',
-                                  style: TextStyle(
-                                    fontFamily: 'Kanit',
-                                    fontSize: 16,
-                                    color: Colors.red,
-                                    decoration: TextDecoration.underline,
-
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      const Text('version: 1.0.0.Beta    ',
-                                        style: TextStyle(
-                                          fontFamily: 'Kani',
-                                          fontSize: 1,
-                                          color: Colors.orange,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              )
+                              SizedBox(height: 30,)
+                              // const SizedBox(height: 20),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //         builder: (context) => testp()
+                              //       ),
+                              //     );
+                              //   },
+                              //   child: const Text(
+                              //     'เข้าสู่ระบบด้วยระบบ PIN',
+                              //     style: TextStyle(
+                              //       fontFamily: 'Kanit',
+                              //       fontSize: 16,
+                              //       color: Colors.red,
+                              //       decoration: TextDecoration.underline,
+                              //
+                              //     ),
+                              //   ),
+                              // ),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.end,
+                              //   children: [
+                              //     Row(
+                              //       mainAxisAlignment: MainAxisAlignment.end,
+                              //       children: [
+                              //         const Text('version: 1.0.0.Beta    ',
+                              //           style: TextStyle(
+                              //             fontFamily: 'Kani',
+                              //             fontSize: 1,
+                              //             color: Colors.orange,
+                              //           ),
+                              //         )
+                              //       ],
+                              //     ),
+                              //   ],
+                              // )
                             ],
                           ),
                         ],

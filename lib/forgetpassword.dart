@@ -11,11 +11,9 @@ class forpassword extends StatefulWidget {
 class _forpasswordState extends State<forpassword> {
   final TextEditingController orgcon = TextEditingController();
   final TextEditingController namecon = TextEditingController();
-  //final TextEditingController passwordcon = TextEditingController();
 
   bool obscureText = true;
   Widget? _messageWidget;
-
 
   void Send(BuildContext context) {
     String name = namecon.text.trim();
@@ -23,18 +21,29 @@ class _forpasswordState extends State<forpassword> {
 
     if (name.isEmpty || org.isEmpty) {
       setState(() {
-        _messageWidget = buildMessageWidget('กรุณากรอก ชื่อองค์กร ชื่อผู้ใช้ หรือ รหัสผ่าน', Colors.red);
+        _messageWidget = buildMessageWidget(
+            'กรุณากรอก ชื่อองค์กร หรือ ชื่อผู้ใช้', Colors.red);
       });
-    } else if (name != 'admin' ||  org != 'Zeen') {
+    } else if (name != 'admin' || org != 'Zeen') {
       setState(() {
-        _messageWidget = buildMessageWidget('ชื่อองค์กร ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง', Colors.red);
+        _messageWidget = buildMessageWidget(
+            'ชื่อองค์กร หรือ ชื่อผู้ใช้ ', Colors.red);
       });
-    } else {
-      setState(() {
-        _messageWidget = null;
-      });
-
     }
+
+    // else {
+    //   setState(() {
+    //     _messageWidget = null;
+    //   });
+    //
+    //   Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) =>
+    //           cyclePage('admin', '1234', 'Zeen'),
+    //     ),
+    //   );
+    // }
   }
 
   Widget buildMessageWidget(String message, Color color) {
@@ -72,11 +81,10 @@ class _forpasswordState extends State<forpassword> {
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      vertical: 60,
+                      vertical: 30,
                       horizontal: 20,
                     ),
                     child: Container(
-                      constraints: BoxConstraints(maxWidth: 667, maxHeight: 870),
                       width: 667,
                       // height: 835,
                       decoration: BoxDecoration(
@@ -90,17 +98,20 @@ class _forpasswordState extends State<forpassword> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Padding(
-                                padding:  EdgeInsets.all(30.0),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: SizedBox(
-                                  width: constraints.maxWidth * 0.6,
-                                  height: constraints.maxHeight * 0.3,
+                                  width: 300,
+                                  height: 300,
                                   child: Image.asset(
                                     'assets/images/Zeenlogo.png',
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 30),
-                              Text(
+                              const SizedBox(
+                              height: 10,
+                              ),
+                              const Text(
                                 'ลืมรหัสผ่าน/ปลดล็อค',
                                 style: TextStyle(
                                   fontFamily: 'Kanit',
@@ -109,35 +120,36 @@ class _forpasswordState extends State<forpassword> {
                                 ),
                               ),
                               if (_messageWidget != null) _messageWidget!,
-                              SizedBox(height: 10),
+
+                              const SizedBox(height: 20),
                               Padding(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   horizontal: 20,
                                 ),
                                 child: SizedBox(
-                                  width: 530,
+                                  width: double.infinity,
                                   child: TextField(
                                     style:
-                                    Theme.of(context).textTheme.bodyText1,
+                                        Theme.of(context).textTheme.bodyLarge,
                                     textAlign: TextAlign.left,
                                     controller: orgcon,
                                     keyboardType: TextInputType.name,
                                     decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
+                                      border: const OutlineInputBorder(),
                                       labelText: 'องค์กร',
-                                      labelStyle: TextStyle(
+                                      labelStyle: const TextStyle(
                                         color: Colors.orange,
                                       ),
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.location_city_rounded,
                                         color: Colors.orange,
                                       ),
-                                      focusedBorder: OutlineInputBorder(
+                                      focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.orange,
                                         ),
                                       ),
-                                      enabledBorder: OutlineInputBorder(
+                                      enabledBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.orange,
                                         ),
@@ -146,7 +158,7 @@ class _forpasswordState extends State<forpassword> {
                                         onPressed: () {
                                           orgcon.clear();
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.cancel,
                                         ),
                                       ),
@@ -154,35 +166,35 @@ class _forpasswordState extends State<forpassword> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Padding(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   horizontal: 20,
                                 ),
-                                child: Container(
-                                  width: 530,
+                                child: SizedBox(
+                                  width: double.infinity,
                                   child: TextField(
                                     style:
-                                    Theme.of(context).textTheme.bodyText1,
+                                        Theme.of(context).textTheme.bodyLarge,
                                     textAlign: TextAlign.left,
                                     controller: namecon,
-                                    keyboardType: TextInputType.emailAddress,
+                                    keyboardType: TextInputType.name,
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(),
                                       labelText: 'ชื่อผู้ใช้',
-                                      labelStyle: TextStyle(
+                                      labelStyle: const TextStyle(
                                         color: Colors.orange,
                                       ),
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.person,
                                         color: Colors.orange,
                                       ),
-                                      focusedBorder: OutlineInputBorder(
+                                      focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.orange,
                                         ),
                                       ),
-                                      enabledBorder: OutlineInputBorder(
+                                      enabledBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Colors.orange,
                                         ),
@@ -191,7 +203,7 @@ class _forpasswordState extends State<forpassword> {
                                         onPressed: () {
                                           namecon.clear();
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.cancel,
                                         ),
                                       ),
@@ -199,21 +211,25 @@ class _forpasswordState extends State<forpassword> {
                                   ),
                                 ),
                               ),
+
                               SizedBox(height: 30),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        },// เพิ่มโค้ดเพื่อนำไปหน้า loginpage หรือเพจที่ต้องการ
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    // เพิ่มโค้ดเพื่อนำไปหน้า loginpage หรือเพจที่ต้องการ
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color.fromRGBO(167, 167, 167, 1),
-                                      onPrimary: Colors.white,
-                                      onSurface: Color.fromRGBO(105, 122, 132, 1)
-                                    ),
+                                        primary:
+                                            Color.fromRGBO(167, 167, 167, 1),
+                                        onPrimary: Colors.white,
+                                        onSurface:
+                                            Color.fromRGBO(105, 122, 132, 1)),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
                                           width: 9,
@@ -230,11 +246,11 @@ class _forpasswordState extends State<forpassword> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-
                                       ],
                                     ),
                                   ),
-                                  SizedBox(width: 10), // ระยะห่างประมาณ 10 หน่วย
+                                  SizedBox(width: 10,height: 70,),
+                                  // ระยะห่างประมาณ 10 หน่วย
                                   ElevatedButton(
                                     onPressed: () => Send(context),
                                     style: ElevatedButton.styleFrom(
@@ -243,13 +259,13 @@ class _forpasswordState extends State<forpassword> {
                                       onSurface: Colors.orange,
                                     ),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
                                           width: 9,
                                           height: 50,
                                         ),
-
                                         Text(
                                           'ส่ง',
                                           style: TextStyle(
@@ -265,7 +281,48 @@ class _forpasswordState extends State<forpassword> {
                                     ),
                                   ),
                                 ],
+                              ),
+                              SizedBox(
+                                height: 100,
                               )
+                              // const SizedBox(height: 20),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //         builder: (context) => testp()
+                              //       ),
+                              //     );
+                              //   },
+                              //   child: const Text(
+                              //     'เข้าสู่ระบบด้วยระบบ PIN',
+                              //     style: TextStyle(
+                              //       fontFamily: 'Kanit',
+                              //       fontSize: 16,
+                              //       color: Colors.red,
+                              //       decoration: TextDecoration.underline,
+                              //
+                              //     ),
+                              //   ),
+                              // ),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.end,
+                              //   children: [
+                              //     Row(
+                              //       mainAxisAlignment: MainAxisAlignment.end,
+                              //       children: [
+                              //         const Text('version: 1.0.0.Beta    ',
+                              //           style: TextStyle(
+                              //             fontFamily: 'Kani',
+                              //             fontSize: 1,
+                              //             color: Colors.orange,
+                              //           ),
+                              //         )
+                              //       ],
+                              //     ),
+                              //   ],
+                              // )
                             ],
                           ),
                         ],
