@@ -124,7 +124,7 @@ class _forpasswordState extends State<forpassword> {
                               const SizedBox(height: 20),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                  horizontal: 20,
+                                  horizontal: 20.0,
                                 ),
                                 child: SizedBox(
                                   width: double.infinity,
