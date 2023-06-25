@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intern/login1.dart';
 import 'package:intern/forgetpassword.dart';
 import 'package:intern/cycle.dart';
+import 'package:intern/register1.dart';
 
 import 'datarow.dart';
 main() {
@@ -20,15 +21,15 @@ class MyApp extends StatelessWidget {
       builder: (context, _) => MaterialApp(
         debugShowCheckedModeBanner: false,
 
-        title: 'My App',
+        title: 'Intern',
         theme: ThemeData(
           textTheme: TextTheme(
             bodyLarge: TextStyle(fontFamily: 'Mali' 'Kanit')
           ),
           primarySwatch: Colors.blue,
         ),
-        //home: cyclePage('admin','1234','Zeen'),
-        home: LoginPage(),
+        home: cyclePage('admin','1234','ZEEN'),
+        //home: LoginPage(),
         //home: forpassword(),
       ),
     );

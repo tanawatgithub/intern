@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intern/loginpage1.dart';
+import 'package:intern/testp.dart';
 
 class forpassword extends StatefulWidget {
   const forpassword({Key? key}) : super(key: key);
@@ -11,10 +12,33 @@ class forpassword extends StatefulWidget {
 class _forpasswordState extends State<forpassword> {
   final TextEditingController orgcon = TextEditingController();
   final TextEditingController namecon = TextEditingController();
+  bool _isnameconTextNotEmpty = false;
+  bool _isorgconTextNotEmpty = false;
 
   bool obscureText = true;
   Widget? _messageWidget;
 
+  void _orgclearText() {
+    orgcon.clear();
+    setState(() {
+      _isorgconTextNotEmpty = false;
+    });
+  }
+
+  void _nameclearText() {
+    namecon.clear() ;
+    setState(() {
+      _isnameconTextNotEmpty = false;
+    });
+  }
+
+
+
+  @override
+  void dispose() {
+    namecon.dispose();
+    super.dispose();
+  }
   void Send(BuildContext context) {
     String name = namecon.text.trim();
     String org = orgcon.text.trim();
@@ -24,7 +48,7 @@ class _forpasswordState extends State<forpassword> {
         _messageWidget = buildMessageWidget(
             'กรุณากรอก ชื่อองค์กร หรือ ชื่อผู้ใช้', Colors.red);
       });
-    } else if (name != 'admin' || org != 'Zeen') {
+    } else if (name != 'admin' || org != 'ZEEN') {
       setState(() {
         _messageWidget = buildMessageWidget(
             'ชื่อองค์กร หรือ ชื่อผู้ใช้ ', Colors.red);
@@ -121,93 +145,111 @@ class _forpasswordState extends State<forpassword> {
                               ),
                               if (_messageWidget != null) _messageWidget!,
 
-                              const SizedBox(height: 20),
+                              const SizedBox(height: 10),
                               Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 20.0,
-                                ),
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
                                 child: SizedBox(
                                   width: double.infinity,
-                                  child: TextField(
-                                    style:
-                                        Theme.of(context).textTheme.bodyLarge,
-                                    textAlign: TextAlign.left,
-                                    controller: orgcon,
-                                    keyboardType: TextInputType.name,
-                                    decoration: InputDecoration(
-                                      border: const OutlineInputBorder(),
-                                      labelText: 'องค์กร',
-                                      labelStyle: const TextStyle(
-                                        color: Colors.orange,
-                                      ),
-                                      prefixIcon: const Icon(
-                                        Icons.location_city_rounded,
-                                        color: Colors.orange,
-                                      ),
-                                      focusedBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.orange,
-                                        ),
-                                      ),
-                                      enabledBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.orange,
-                                        ),
-                                      ),
-                                      suffixIcon: IconButton(
-                                        onPressed: () {
-                                          orgcon.clear();
+                                  child: Stack(
+                                    alignment: Alignment.centerRight,
+                                    children: [
+                                      TextField(
+                                        style: Theme.of(context).textTheme.bodyLarge,
+                                        textAlign: TextAlign.left,
+                                        controller: orgcon,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _isorgconTextNotEmpty = value.isNotEmpty;
+                                          });
                                         },
-                                        icon: const Icon(
-                                          Icons.cancel,
+                                        keyboardType: TextInputType.name,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                          labelText: 'องค์กร',
+                                          labelStyle: TextStyle(
+                                            color: Colors.orange,
+                                          ),
+                                          prefixIcon: Icon(
+                                            Icons.person,
+                                            color: Colors.orange,
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.orange,
+                                            ),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.orange,
+                                            ),
+                                          ),
                                         ),
+                                        inputFormatters: [
+                                          UpperCaseTxt(),
+                                        ],
                                       ),
-                                    ),
+                                      if (_isorgconTextNotEmpty)
+                                        Positioned(
+                                          right: 0,
+                                          child: IconButton(
+                                            icon: Icon(Icons.cancel , size: 20, color: Colors.grey,),
+                                            onPressed: _orgclearText,
+                                          ),
+                                        ),
+                                    ],
                                   ),
                                 ),
                               ),
+
                               const SizedBox(height: 10),
                               Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 20,
-                                ),
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
                                 child: SizedBox(
                                   width: double.infinity,
-                                  child: TextField(
-                                    style:
-                                        Theme.of(context).textTheme.bodyLarge,
-                                    textAlign: TextAlign.left,
-                                    controller: namecon,
-                                    keyboardType: TextInputType.name,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                      labelText: 'ชื่อผู้ใช้',
-                                      labelStyle: const TextStyle(
-                                        color: Colors.orange,
-                                      ),
-                                      prefixIcon: const Icon(
-                                        Icons.person,
-                                        color: Colors.orange,
-                                      ),
-                                      focusedBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.orange,
-                                        ),
-                                      ),
-                                      enabledBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.orange,
-                                        ),
-                                      ),
-                                      suffixIcon: IconButton(
-                                        onPressed: () {
-                                          namecon.clear();
+                                  child: Stack(
+                                    alignment: Alignment.centerRight,
+                                    children: [
+                                      TextField(
+                                        style: Theme.of(context).textTheme.bodyLarge,
+                                        textAlign: TextAlign.left,
+                                        controller: namecon,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _isnameconTextNotEmpty = value.isNotEmpty;
+                                          });
                                         },
-                                        icon: const Icon(
-                                          Icons.cancel,
+                                        keyboardType: TextInputType.name,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                          labelText: 'ชื่อผู้ใช้',
+                                          labelStyle: TextStyle(
+                                            color: Colors.orange,
+                                          ),
+                                          prefixIcon: Icon(
+                                            Icons.person,
+                                            color: Colors.orange,
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.orange,
+                                            ),
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Colors.orange,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                      if (_isnameconTextNotEmpty)
+                                        Positioned(
+                                          right: 0,
+                                          child: IconButton(
+                                            icon: Icon(Icons.cancel , size: 20, color: Colors.grey,),
+                                            onPressed: _nameclearText,
+                                          ),
+                                        ),
+                                    ],
                                   ),
                                 ),
                               ),

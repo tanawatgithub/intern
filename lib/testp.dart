@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class testp extends StatefulWidget {
+class UpperCaseTxt extends TextInputFormatter {
   @override
-  _testpState createState() => _testpState();
-}
-
-class _testpState extends State<testp> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('หน้าต่อไป'),
-      ),
-      body: Center(
-        child: Text('นี่คือหน้าต่อไป'),
-      ),
-    );
+  TextEditingValue formatEditUpdate(
+      TextEditingValue txtOld, TextEditingValue txtNew){
+    return txtNew.copyWith(text: txtNew.text.toUpperCase());
   }
 }
