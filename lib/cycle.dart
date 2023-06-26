@@ -35,6 +35,8 @@ class _cyclePageState extends State<cyclePage> {
   List<Cycle> cycles = [];
   DateTime? selectedDate;
   String dropdownValue = 'Status';
+  String dropdownValueSD = 'StartDate';
+  String dropdownValueED = 'EndDate';
   DateTime? selectedDateStart;
   DateTime? selectedDateEnd;
 
@@ -302,7 +304,7 @@ class _cyclePageState extends State<cyclePage> {
                           margin: EdgeInsets.fromLTRB(
                               75 * fem, 0 * fem, 180 * fem, 1 * fem),
                           child: Expanded(
-                            flex: 2,
+                            flex: 1,
                             child: Text(
                               'Cycle',
                               style: TextStyle(
@@ -319,9 +321,9 @@ class _cyclePageState extends State<cyclePage> {
                         Container(
                           // frame5351m6n (0:116)
                           margin: EdgeInsets.fromLTRB(
-                              20 * fem, 0 * fem, 109.17 * fem, 1 * fem),
+                              20 * fem, 0 * fem, 140 * fem, 1 * fem),
                           child: Expanded(
-                            flex: 2,
+                            flex: 1,
                             child: Row(
                               children: [
                                 Text(
@@ -344,65 +346,50 @@ class _cyclePageState extends State<cyclePage> {
                             ),
                           ),
                         ),
-                        Container(
-                          // frame5352kDc (0:119)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 109.17 * fem, 1 * fem),
-                          child: Expanded(
-                            flex: 1,
-                            child: ElevatedButton.icon(
-                              onPressed: () => _selectDateStart(context),
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.all(8),
-                                primary: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                              ),
-                              label: Text(
-                                 'StartDate',
-                                style: TextStyle(
-                                  fontFamily: 'Kanit',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              icon:
-                              Icon(Icons.calendar_month, color: Colors.black),
-                            ),
-                          ),
-                        ),
-                        PopupMenuItem(
+                        GestureDetector(
+                          onTap: () => _selectDateStart(context),
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 154.17 * fem, 1 * fem),
-                            child: ElevatedButton.icon(
-                              onPressed: () => _selectDateEnd(context),
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.all(8),
-                                primary: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
+                            margin: EdgeInsets.fromLTRB(0, 0, 155, 15 ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  dropdownValueSD, // แสดงข้อมูลเวลาที่ต้องการ
+                                  style: const TextStyle(
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),
                                 ),
-                              ),
-                              label: Text(
-                                 'EndDate',
-                                style: TextStyle(
-                                  fontFamily: 'Kanit',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              icon: Icon(Icons.calendar_month, color: Colors.black),
+                                const Icon(Icons.arrow_drop_down_outlined, color: Colors.black),
+                              ],
                             ),
                           ),
                         ),
-
+                        GestureDetector(
+                          onTap: () => _selectDateEnd(context),
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(0, 0, 190, 15 ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  dropdownValueED, // แสดงข้อมูลเวลาที่ต้องการ
+                                  style: const TextStyle(
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                const Icon(Icons.arrow_drop_down_outlined, color: Colors.black),
+                              ],
+                            ),
+                          ),
+                        ),
                         Container(
                           // frame5354vQv (0:125)
                           margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 80 * fem, 0 * fem),
+                              0 * fem, 0 * fem, 65 * fem, 5 * fem),
                           child: Row(
                             //crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -410,30 +397,28 @@ class _cyclePageState extends State<cyclePage> {
                               Container(
                                 child: Theme(
                                   data: Theme.of(context).copyWith(
-                                    highlightColor: Colors
-                                        .orange, // Set the highlight color here
+                                    highlightColor: Colors.orange, // Set the highlight color here
                                   ),
                                   // status4X8 (0:126)
-                                  //margin: EdgeInsets.fromLTRB(0 * fem, 1 * fem, 0 * fem, 0 * fem),
                                   child: PopupMenuButton<String>(
                                     onSelected: (String status) {
                                       filterDataByStatus(status);
                                     },
                                     itemBuilder: (BuildContext context) {
                                       return <PopupMenuEntry<String>>[
-                                        PopupMenuItem<String>(
+                                        const PopupMenuItem<String>(
                                           value: 'ALL',
                                           child: Text('ALL'),
                                         ),
-                                        PopupMenuItem<String>(
+                                        const PopupMenuItem<String>(
                                           value: 'DONE',
                                           child: Text('DONE'),
                                         ),
-                                        PopupMenuItem<String>(
+                                        const PopupMenuItem<String>(
                                           value: 'CANCEL',
                                           child: Text('CANCEL'),
                                         ),
-                                        PopupMenuItem<String>(
+                                        const PopupMenuItem<String>(
                                           value: 'IN_PROGRESS',
                                           child: Text('IN_PROGRESS'),
                                         ),

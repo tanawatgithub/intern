@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intern/login1.dart';
 import 'package:intern/forgetpassword.dart';
 import 'package:intern/cycle.dart';
+import 'package:intern/report.dart';
 
 import 'Test/datarow.dart';
 main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(1920 , 1080), // Design size used for scaling
+      designSize: Size(1440 , 1080), // Design size used for scaling
       builder: (context, _) => MaterialApp(
         debugShowCheckedModeBanner: false,
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         home: cyclePage('admin','1234','ZEEN'),
         //home: LoginPage(),
         //home: forpassword(),
+        //home: reportPage(),
       ),
     );
   }
