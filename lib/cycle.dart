@@ -263,7 +263,7 @@ class _cyclePageState extends State<cyclePage> {
                 color: Color(0xffdc2529),
               ),
             ),
-            //------------------------------------ //---------------------------------------------------------------------------------//
+            //------------------------------------ //-----------------------------------------------------------------------------------//
             SizedBox(
               child: Column(
                 children: [
@@ -360,10 +360,7 @@ class _cyclePageState extends State<cyclePage> {
                                 ),
                               ),
                               label: Text(
-                                selectedDateStart != null
-                                    ? DateFormat('yyyy-MM-dd')
-                                    .format(selectedDateStart!)
-                                    : 'StartDate',
+                                 'StartDate',
                                 style: TextStyle(
                                   fontFamily: 'Kanit',
                                   fontWeight: FontWeight.bold,
@@ -389,9 +386,7 @@ class _cyclePageState extends State<cyclePage> {
                                 ),
                               ),
                               label: Text(
-                                selectedDateEnd != null
-                                    ? DateFormat('yyyy-MM-dd').format(selectedDateEnd!)
-                                    : 'EndDate',
+                                 'EndDate',
                                 style: TextStyle(
                                   fontFamily: 'Kanit',
                                   fontWeight: FontWeight.bold,
