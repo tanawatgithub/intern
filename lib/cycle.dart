@@ -541,7 +541,7 @@ class _cyclePageState extends State<cyclePage> {
               colorSub: Colors.white,
               colorPrimary: Colors.orange,
               //numberPages: numberOfPages,
-              pageTotal: 9,
+              pageTotal: 10,
               //currentPage: currentPage,
               onPageChanged: (index) {
                 setState(() {
