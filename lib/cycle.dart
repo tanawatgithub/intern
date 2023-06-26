@@ -349,7 +349,7 @@ class _cyclePageState extends State<cyclePage> {
                         GestureDetector(
                           onTap: () => _selectDateStart(context),
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 155, 15 ),
+                            margin: EdgeInsets.fromLTRB(0, 0, 155, 10 ),
                             child: Row(
                               children: [
                                 Text(
@@ -369,7 +369,7 @@ class _cyclePageState extends State<cyclePage> {
                         GestureDetector(
                           onTap: () => _selectDateEnd(context),
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 190, 15 ),
+                            margin: EdgeInsets.fromLTRB(0, 0, 190, 10 ),
                             child: Row(
                               children: [
                                 Text(
@@ -389,7 +389,7 @@ class _cyclePageState extends State<cyclePage> {
                         Container(
                           // frame5354vQv (0:125)
                           margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 65 * fem, 5 * fem),
+                              0 * fem, 0 * fem, 65 * fem, 0 * fem),
                           child: Row(
                             //crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
