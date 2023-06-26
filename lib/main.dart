@@ -3,9 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intern/login1.dart';
 import 'package:intern/forgetpassword.dart';
 import 'package:intern/cycle.dart';
-import 'package:intern/register1.dart';
 
-import 'datarow.dart';
+import 'Test/datarow.dart';
 main() {
   runApp(MyApp());
 }

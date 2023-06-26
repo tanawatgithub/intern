@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intern/cycle.dart';
-import 'package:intern/loginpage1.dart';
+import 'package:intern/Test/loginpage1.dart';
 import 'package:intern/testp.dart';
 import 'package:intern/forgetpassword.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

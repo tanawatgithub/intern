@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intern/loginpage1.dart';
+import 'package:intern/Test/loginpage1.dart';
 import 'package:intern/testp.dart';
 
 class forpassword extends StatefulWidget {

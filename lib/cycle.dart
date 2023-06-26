@@ -151,118 +151,110 @@ class _cyclePageState extends State<cyclePage> {
           return Container(
           child: ListView(
             children: [
-            Container(
-              padding:
-              EdgeInsets.fromLTRB(65 * fem, 31.5 * fem, 65 * fem, 26.5 * fem),
-              width: double.infinity,
-              height: 130 * fem,
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 790 * fem, 0 * fem),
-                    width: 210 ,
-                    height: 80 ,
-                    child: Image.asset(
-                      'assets/images/zeenapplogo.png',
-                      fit: BoxFit.cover,
+              Container(
+                padding: EdgeInsets.fromLTRB(65 * fem, 17.5 * fem, 65 * fem, 12.5 * fem),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 800 * fem, 0 * fem),
+                      width: 220.67 * fem,
+                      height: 82.75 * fem,
+                      child: Image.asset(
+                        'assets/images/zeenapplogo.png',
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(
-                        0 * fem, 18.5 * fem, 0 * fem, 0 * fem),
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 7 * fem, 0 * fem),
-                          padding: EdgeInsets.fromLTRB(
-                              4 * fem, 0 * fem, 0 * fem, 14.5 * fem),
-                          height: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Color(0xffffffff),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 5 * fem, 0 * fem, 20 * fem),
-                                constraints: BoxConstraints(
-                                  maxWidth: 158 * fem,
-                                ),
-                                child: Text(
-                                  'คุณ : ${widget.txtname}',
-                                  style: TextStyle(
-                                    fontFamily: 'Kanit',
-                                    fontSize: 20 * ffem,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.5 * ffem / fem,
-                                    //letterSpacing: 0.5 * fem,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                // useridauditor01zeencloud4mU (0:91)
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 1 * fem, 15 * fem),
-                                child: Text(
-                                  'User ID : auditor01@zeen.cloud',
-                                  style: TextStyle(
-                                    fontFamily: 'Kanit',
-                                    fontSize: 15 * ffem,
-                                    fontWeight: FontWeight.w400,
-                                    height: 0.3333333333 * ffem / fem,
-                                    // letterSpacing: 0.400000006 * fem,
-                                    color: Color(0xff6d7c84),
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                // orgplus8FY (0:93)
-                                'ORG : ${widget.txtorg}',
-                                style: TextStyle(
-                                  fontFamily: 'Kanit',
-                                  fontSize: 14 * ffem,
-                                  fontWeight: FontWeight.w400,
-                                  height: 0.3571428571 * ffem / fem,
-                                  letterSpacing: 0.400000006 * fem,
-                                  color: Color(0xfffd7e18),
-                                ),
-                              ),
-                            ],
-                          ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(0 * fem, 18.5 * fem, 0 * fem, 0 * fem),
+                        decoration: BoxDecoration(
+                          color: Color(0xffffffff),
                         ),
-                        Container(
-                          // maskgroupqfk (0:96)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 0 * fem, 13 * fem),
-                          width: 60 * fem,
-                          height: 60 * fem,
-                          child: Image.asset(
-                            'assets/images/mask-group.png',
-                            width: 60 * fem,
-                            height: 60 * fem,
-                          ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 7 * fem, 0 * fem),
+                                padding: EdgeInsets.fromLTRB(18 * fem, 0 * fem, 0 * fem, 12.5 * fem),
+                                decoration: BoxDecoration(
+                                  color: Color(0xffffffff),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0 * fem, 5 * fem, 6 * fem, 4 * fem),
+                                      constraints: BoxConstraints(
+                                        maxWidth: 189 * fem,
+                                      ),
+                                      child: Text(
+                                        'พรพจน์ ศรีวิชยางกูร',
+                                        style: TextStyle(
+                                          fontFamily: 'Kanit',
+                                          fontSize: 16 * ffem,
+                                          fontWeight: FontWeight.w600,
+                                          height: 2 * ffem / fem,
+                                          letterSpacing: 0.5 * fem,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 10* fem),
+                                      child: Text(
+                                        'User ID : ${widget.txtname}',
+                                        style: TextStyle(
+                                          fontFamily: 'Kanit',
+                                          fontSize: 14 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 0.3125 * ffem / fem,
+                                          letterSpacing: 0.400000006 * fem,
+                                          color: Color(0xff6d7c84),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 10 * fem),
+                                      child: Text(
+                                        'ORG : ${widget.txtorg}',
+                                        style: TextStyle(
+                                          fontFamily: 'Kanit',
+                                          fontSize: 14 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 0.2083333333 * ffem / fem,
+                                          letterSpacing: 0.400000006 * fem,
+                                          color: Color(0xfffd7e18),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 13*fem),
+                              width: 60 * fem,
+                              height: 60 * fem,
+                              child: Image.asset(
+                                'assets/images/mask-group.png',
+                                width: 60 * fem,
+                                height: 60 * fem,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
 
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
+              Container(
               // frame5270YaA (0:100)
               padding: EdgeInsets.fromLTRB(0 * fem, 9 * fem, 0 * fem, 0 * fem),
               width: double.infinity,
@@ -308,7 +300,7 @@ class _cyclePageState extends State<cyclePage> {
                         Container(
                           // cycleFu8 (0:115)
                           margin: EdgeInsets.fromLTRB(
-                              75 * fem, 0 * fem, 175 * fem, 1 * fem),
+                              75 * fem, 0 * fem, 180 * fem, 1 * fem),
                           child: Expanded(
                             flex: 2,
                             child: Text(
@@ -504,7 +496,7 @@ class _cyclePageState extends State<cyclePage> {
                             // Container to display the data
                             padding: EdgeInsets.fromLTRB(30 * fem, 26 * fem, 30 * fem, 26 * fem),
                             width: double.infinity,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color.fromRGBO(255, 255, 255, 1),
                               borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(2),
