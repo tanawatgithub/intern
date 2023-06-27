@@ -5,6 +5,7 @@ import 'package:intern/forgetpassword.dart';
 import 'package:intern/cycle.dart';
 import 'package:intern/report.dart';
 
+
 import 'Test/datarow.dart';
 main() {
   runApp(MyApp());
@@ -28,10 +29,10 @@ class MyApp extends StatelessWidget {
           ),
           primarySwatch: Colors.blue,
         ),
-        home: cyclePage('admin','1234','ZEEN'),
+        //home: cyclePage('admin','1234','ZEEN'),
         //home: LoginPage(),
         //home: forpassword(),
-        //home: reportPage(),
+        home: ReportPage('admin','ZEEN'),
       ),
     );
   }
