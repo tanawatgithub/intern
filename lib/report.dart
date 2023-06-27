@@ -12,6 +12,7 @@ class ReportPage extends StatefulWidget {
 
 class _ReportPageState extends State<ReportPage> {
   bool isExpanded = false;
+  String? selectedFilter;
 
   @override
   Widget build(BuildContext context) {
@@ -193,6 +194,7 @@ class _ReportPageState extends State<ReportPage> {
                   children: [
                     DropdownButton(
                         hint: const Text("Filter1"),
+                        value: selectedFilter,
                         items: const [
                           DropdownMenuItem(
                             value: "ALL",
@@ -219,7 +221,12 @@ class _ReportPageState extends State<ReportPage> {
                             child: Text("Province"),
                           ),
                         ],
-                        onChanged: (value) {}),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedFilter = value as String?;
+                          });
+                        },
+                    ),
                     SizedBox(
                       width: 20.0,
                     ),
