@@ -750,9 +750,9 @@ class _ReportPageState extends State<ReportPage> {
                                 DataCell(Text("")),
                               ]),
                             ]),
-
                       ],
                     ),
+                    
                   ),
                 ),
               ],
