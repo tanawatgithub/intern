@@ -15,7 +15,7 @@ class ReportService{
       print("xxxxxx2");
       print(response);
       if(response.statusCode == 200){
-        List list = jsonDecode(utf8.decode(response.bodyBytes))??[];//
+        List list = jsonDecode(utf8.decode(response.bodyBytes))??[];
         List<Report> result = list.map((e) => Report.fromJson(e)).toList();
         print(result);
         return result;
