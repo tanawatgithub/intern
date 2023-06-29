@@ -1,8 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:intern/Report/datatablereport.dart';
-import 'package:intern/Report/service.dart';
+
 
 class ReportPage extends StatefulWidget {
   final String? txtname;
@@ -13,6 +12,16 @@ class ReportPage extends StatefulWidget {
   @override
   State<ReportPage> createState() => _ReportPageState();
 }
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+  };
+}
+
 
 class _ReportPageState extends State<ReportPage> {
   bool isExpanded = false;
@@ -25,11 +34,6 @@ class _ReportPageState extends State<ReportPage> {
   void reportf() async {
      //reports = await ReportService().getReport();
   }
-  @override
-  Set<PointerDeviceKind> get dragDevice =>{
-    PointerDeviceKind.touch,
-    PointerDeviceKind.mouse,
-  };
 
   @override
   Widget build(BuildContext context) {
@@ -290,7 +294,6 @@ class _ReportPageState extends State<ReportPage> {
                   controller: _horizontalScrollController,
                   thumbVisibility: true,
                   trackVisibility: true,
-                  notificationPredicate: (notif) => notif.depth == 1,
                   thickness: 10,
                   child: PaginatedDataTable(
                     controller: _horizontalScrollController,
