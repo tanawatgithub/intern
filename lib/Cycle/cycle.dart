@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intern/service.dart';
+import 'package:intern/Cycle/service.dart';
 import 'component.dart';
-import 'domain/cycle.dart';
+import '../domain/cycle.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:intl/intl.dart';
 import 'package:number_pagination/number_pagination.dart';
 
 class cyclePage extends StatefulWidget {
@@ -267,6 +266,7 @@ class _cyclePageState extends State<cyclePage> {
             ),
             //------------------------------------ //-----------------------------------------------------------------------------------//
             SizedBox(
+              height: 10,
               child: Column(
                 children: [
                   Container(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:intern/cycle.dart';
+import 'package:intern/Cycle/cycle.dart';
 import 'package:intern/Test/loginpage1.dart';
-import 'package:intern/testp.dart';
-import 'package:intern/forgetpassword.dart';
+import 'package:intern/Cycle/testp.dart';
+import 'package:intern/Login/forgetpassword.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intern/testp.dart';
+import 'package:intern/Cycle/testp.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

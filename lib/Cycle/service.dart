@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'domain/cycle.dart';
+import '../domain/cycle.dart';
 
 import 'dart:convert';
 import 'dart:developer';
