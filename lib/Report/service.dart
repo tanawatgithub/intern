@@ -6,7 +6,7 @@ import 'dart:developer';
 
 class ReportService{
   Future<List<Report>> getReport() async{
-    String url = "///";
+    String url = "http://192.168.86.29:8083/training-ws/test/getAuditResult/UNI";
     final queryParameters ={
       'org' : "",
     };
@@ -16,7 +16,7 @@ class ReportService{
       print(response);
       if(response.statusCode == 200){
         List list = jsonDecode(response.body)??[];
-        List<Report> result = list.map((e) => Report.FromJson(e)).toList();
+        List<Report> result = list.map((e) => Report.fromJson(e)).toList();
         print(result);
         return result;
       }

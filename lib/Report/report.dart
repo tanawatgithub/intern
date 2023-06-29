@@ -1,6 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import '../domain/report.dart';
+import 'service.dart';
 
 
 class ReportPage extends StatefulWidget {
@@ -24,6 +25,7 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
 
 
 class _ReportPageState extends State<ReportPage> {
+  List<Report> reports = [];
   bool isExpanded = false;
   String? selectedFilter;
   DTS dts = DTS();
@@ -31,9 +33,18 @@ class _ReportPageState extends State<ReportPage> {
 
   final _horizontalScrollController = ScrollController();
 
-  void reportf() async {
-     //reports = await ReportService().getReport();
+  @override
+  void initState(){
+    super.initState();
+    reportf();
   }
+
+  void reportf() async {
+     final reports = await ReportService().getReport();
+     dts.updateReports((reports));
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -319,7 +330,6 @@ class _ReportPageState extends State<ReportPage> {
                       DataColumn(label: Text("OverallImageUrl")),
                       DataColumn(label: Text("FinalAnswer")),
                       DataColumn(label: Text("AutoAnswer")),
-                      DataColumn(label: Text("AIAnswer")),
                       DataColumn(label: Text("AnswerBy")),
                       DataColumn(label: Text("AnswerDiff")),
                       DataColumn(label: Text("ShelfShareDiff")),
@@ -343,6 +353,7 @@ class _ReportPageState extends State<ReportPage> {
                       DataColumn(label: Text("ShopRef2")),
                       DataColumn(label: Text("BasketRef1")),
                       DataColumn(label: Text("BasketRef2")),
+                      DataColumn(label: Text("AIAnswer")),
                     ],
                     source: dts,
                     onRowsPerPageChanged: (r) {
@@ -363,65 +374,76 @@ class _ReportPageState extends State<ReportPage> {
 }
 
 class DTS extends DataTableSource {
+  List<Report> reports = [];
+
+  void updateReports(List<Report> newReports) {
+    reports.clear();
+    reports.addAll(newReports);
+    notifyListeners();
+  }
+
+
   @override
-  DataRow getRow(int index) {
-    return DataRow.byIndex(
-      index: index,
-      cells: const [
-        DataCell(Text("FMGT_2023_06_01")),
-        DataCell(Text("A17714")),
-        DataCell(Text("SUMMIT")),
-        DataCell(Text("FOUND")),
-        DataCell(Text("311829")),
-        DataCell(Text("DEALER ONE CO., LTD.")),
-        DataCell(Text("C000255108")),
-        DataCell(Text("ร้านเอโกะ")),
-        DataCell(Text("MOM_POP")),
-        DataCell(Text("BK")),
-        DataCell(Text("กรุงเทพมหานคร")),
-        DataCell(Text("P004")),
-        DataCell(Text("G1")),
-        DataCell(Text("Q004")),
-        DataCell(Text("สํารวจสินค้า โฟร์โมสต์ (กล่อง) ในตู้แช่")),
-        DataCell(Text("มีสินค้า โฟร์โมสต์ (เดี่ยว) จัดเรียง 1 แผ่นชั้นหรือไม่ (Perfect Store)")),
-        DataCell(Text("ARR")),
-        DataCell(Text("100")),
-        DataCell(Text("")),
-        DataCell(Text("")),
-        DataCell(Text("TRUE")),
-        DataCell(Text("")),
-        DataCell(Text("AUTO")),
-        DataCell(Text("")),
-        DataCell(Text("Y")),
-        DataCell(Text("N")),
-        DataCell(Text("N")),
-        DataCell(Text("N")),
-        DataCell(Text("TRUE")),
-        DataCell(Text("")),
-        DataCell(Text("TRUE")),
-        DataCell(Text("")),
-        DataCell(Text("ZEEN.DEMO03@GMAIL.COM")),
-        DataCell(Text("ZEEN.DEMO03@GMAIL.COM")),
-        DataCell(Text("2023-06-03T00:40:13")),
-        DataCell(Text("2023-06-03T00:40:47")),
-        DataCell(Text("2023-06-03T00:40:47")),
-        DataCell(Text("FRIDGE_PS")),
-        DataCell(Text("PERFECT_STORE")),
-        DataCell(Text("")),
-        DataCell(Text("")),
-        DataCell(Text("")),
-        DataCell(Text("")),
-        DataCell(Text("")),
-        DataCell(Text("")),
+  DataRow? getRow(int index) {
+    // // ตรวจสอบว่ามีข้อมูลในรายการ reports หรือไม่
+    // if (index >= reports.length) return null;
+    final Report = reports[index];
+    return DataRow(
+      cells:  [
+        DataCell(Text(Report.Cycle?? '')),
+        DataCell(Text(Report.AuditID?? '')),
+        DataCell(Text(Report.AuditStatus?? '')),
+        DataCell(Text(Report.FoundStatus?? '')),
+        DataCell(Text(Report.DcID?? '')),
+        DataCell(Text(Report.DcName?? '')),
+        DataCell(Text(Report.ShopID?? '')),
+        DataCell(Text(Report.ShopName?? '')),
+        DataCell(Text(Report.ShopSegment?? '')),
+        DataCell(Text(Report.Region?? '')),
+        DataCell(Text(Report.Province?? '')),
+        DataCell(Text(Report.PageID?? '')),
+        DataCell(Text(Report.GroupID?? '')),
+        DataCell(Text(Report.QuestionID?? '')),
+        DataCell(Text(Report.Topic?? '')),
+        DataCell(Text(Report.Title?? '')),
+        DataCell(Text(Report.Module?? '')),
+        DataCell(Text(Report.Score.toString())),
+        DataCell(Text(Report.OverallImageUrl?? '')),
+        DataCell(Text(Report.FinalAnswer?? '')),
+        DataCell(Text(Report.AutoAnswer?? '')),
+        DataCell(Text(Report.AnswerBy?? '')),
+        DataCell(Text(Report.AnswerDiff?? '')),
+        DataCell(Text(Report.ShelfShareDiff?? '')),
+        DataCell(Text(Report.PopDiff?? '')),
+        DataCell(Text(Report.ClusterDiff?? '')),
+        DataCell(Text(Report.ShelfLayoutDiff?? '')),
+        DataCell(Text(Report.IsAISkipped?? '')),
+        DataCell(Text(Report.ChallengeBy?? '')),
+        DataCell(Text(Report.AutoQuestion?? '')),
+        DataCell(Text(Report.DetectionStatus?? '')),
+        DataCell(Text(Report.SubmitByAuditorID?? '')),
+        DataCell(Text(Report.UpdateByAuditorID?? '')),
+        DataCell(Text(Report.CheckInDateTime?? '')),
+        DataCell(Text(Report.CheckOutDateTime?? '')),
+        DataCell(Text(Report.UpdateDateTime?? '')),
+        DataCell(Text(Report.QuestionTags?? '')),
+        DataCell(Text(Report.ScoreTags?? '')),
+        DataCell(Text(Report.QuestionRef1?? '')),
+        DataCell(Text(Report.QuestionRef2?? '')),
+        DataCell(Text(Report.ShopRef1?? '')),
+        DataCell(Text(Report.ShopRef2?? '')),
+        DataCell(Text(Report.BasketRef1?? '')),
+        DataCell(Text(Report.BasketRef2?? '')),
+        DataCell(Text(Report.AIAnswer?? '')),
       ],
     );
   }
 
   @override
-  bool get isRowCountApproximate => true;
+  bool get isRowCountApproximate => false;
 
   @override
-  int get rowCount => 50;
+  int get rowCount => reports.length;
 
   @override
   int get selectedRowCount => 0;
