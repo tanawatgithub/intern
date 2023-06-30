@@ -142,4 +142,5 @@ class Report {
       BasketRef2: json['basketRef2'],
     );
   }
+  //
 }
