@@ -1,7 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../domain/report.dart';
 import 'service.dart';
+
 
 
 class ReportPage extends StatefulWidget {
@@ -32,6 +34,8 @@ class _ReportPageState extends State<ReportPage> {
   int _rowPerPage = PaginatedDataTable.defaultRowsPerPage;
 
   final _horizontalScrollController = ScrollController();
+
+  final ReportService reportService = ReportService();
 
   @override
   void initState(){
@@ -297,72 +301,107 @@ class _ReportPageState extends State<ReportPage> {
                   ),
                 ),
 
-                const SizedBox(
-                  height: 10.0,
-                ),
+                // const SizedBox(
+                //   height: 10.0,
+                // ),
                 // Now Let's add the table
-                Scrollbar(
-                  controller: _horizontalScrollController,
-                  thumbVisibility: true,
-                  trackVisibility: true,
-                  thickness: 10,
-                  child: PaginatedDataTable(
-                    controller: _horizontalScrollController,
-                    columns: const [
-                      DataColumn(label: Text("Cycle")),
-                      DataColumn(label: Text("AuditID")),
-                      DataColumn(label: Text("AuditStatus")),
-                      DataColumn(label: Text("FoundStatus")),
-                      DataColumn(label: Text("DcID")),
-                      DataColumn(label: Text("DcName")),
-                      DataColumn(label: Text("ShopID")),
-                      DataColumn(label: Text("ShopName")),
-                      DataColumn(label: Text("ShopSegment")),
-                      DataColumn(label: Text("Region")),
-                      DataColumn(label: Text("Province")),
-                      DataColumn(label: Text("PageID")),
-                      DataColumn(label: Text("GroupID")),
-                      DataColumn(label: Text("QuestionID")),
-                      DataColumn(label: Text("Topic")),
-                      DataColumn(label: Text("Title")),
-                      DataColumn(label: Text("Module")),
-                      DataColumn(label: Text("Score")),
-                      DataColumn(label: Text("OverallImageUrl")),
-                      DataColumn(label: Text("FinalAnswer")),
-                      DataColumn(label: Text("AutoAnswer")),
-                      DataColumn(label: Text("AnswerBy")),
-                      DataColumn(label: Text("AnswerDiff")),
-                      DataColumn(label: Text("ShelfShareDiff")),
-                      DataColumn(label: Text("PopDiff")),
-                      DataColumn(label: Text("ClusterDiff")),
-                      DataColumn(label: Text("ShelfLayoutDiff")),
-                      DataColumn(label: Text("IsAISkipped")),
-                      DataColumn(label: Text("ChallengeBy")),
-                      DataColumn(label: Text("AutoQuestion")),
-                      DataColumn(label: Text("DetectionStatus")),
-                      DataColumn(label: Text("SubmitByAuditorID")),
-                      DataColumn(label: Text("UpdateByAuditorID")),
-                      DataColumn(label: Text("CheckInDateTime")),
-                      DataColumn(label: Text("CheckOutDateTime")),
-                      DataColumn(label: Text("UpdateDateTime")),
-                      DataColumn(label: Text("QuestionTags")),
-                      DataColumn(label: Text("ScoreTags")),
-                      DataColumn(label: Text("QuestionRef1")),
-                      DataColumn(label: Text("QuestionRef2")),
-                      DataColumn(label: Text("ShopRef1")),
-                      DataColumn(label: Text("ShopRef2")),
-                      DataColumn(label: Text("BasketRef1")),
-                      DataColumn(label: Text("BasketRef2")),
-                      DataColumn(label: Text("AIAnswer")),
-                    ],
-                    source: dts,
-                    onRowsPerPageChanged: (r) {
-                      setState(() {
-                        _rowPerPage = r!;
-                      });
-                    },
-                    rowsPerPage: _rowPerPage,
-                  ),
+                FutureBuilder(
+                  future: reportService.getReport(),
+                  builder: (context,snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Container(
+                        width: 20,
+                        height: 300,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: const [
+                            BoxShadow(
+                            color: Colors.black26,
+                              blurRadius: 10,
+                            offset: Offset(0, 10),
+                          ),
+                          ]
+                        ),
+                        child: Center(
+                          child: SpinKitDualRing(
+                            color: Colors.orange,
+                            size: 60.0,
+                          ),
+                        ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text('เกิดข้อผิดพลาด: ${snapshot.error}'),
+                      );
+                    }
+                    else {
+                      return Scrollbar(
+                        controller: _horizontalScrollController,
+                        thumbVisibility: true,
+                        trackVisibility: true,
+                        thickness: 10,
+                        child: PaginatedDataTable(
+                          controller: _horizontalScrollController,
+                          columns: const [
+                            DataColumn(label: Text("Cycle")),
+                            DataColumn(label: Text("AuditID")),
+                            DataColumn(label: Text("AuditStatus")),
+                            DataColumn(label: Text("FoundStatus")),
+                            DataColumn(label: Text("DcID")),
+                            DataColumn(label: Text("DcName")),
+                            DataColumn(label: Text("ShopID")),
+                            DataColumn(label: Text("ShopName")),
+                            DataColumn(label: Text("ShopSegment")),
+                            DataColumn(label: Text("Region")),
+                            DataColumn(label: Text("Province")),
+                            DataColumn(label: Text("PageID")),
+                            DataColumn(label: Text("GroupID")),
+                            DataColumn(label: Text("QuestionID")),
+                            DataColumn(label: Text("Topic")),
+                            DataColumn(label: Text("Title")),
+                            DataColumn(label: Text("Module")),
+                            DataColumn(label: Text("Score")),
+                            DataColumn(label: Text("OverallImageUrl")),
+                            DataColumn(label: Text("FinalAnswer")),
+                            DataColumn(label: Text("AutoAnswer")),
+                            DataColumn(label: Text("AnswerBy")),
+                            DataColumn(label: Text("AnswerDiff")),
+                            DataColumn(label: Text("ShelfShareDiff")),
+                            DataColumn(label: Text("PopDiff")),
+                            DataColumn(label: Text("ClusterDiff")),
+                            DataColumn(label: Text("ShelfLayoutDiff")),
+                            DataColumn(label: Text("IsAISkipped")),
+                            DataColumn(label: Text("ChallengeBy")),
+                            DataColumn(label: Text("AutoQuestion")),
+                            DataColumn(label: Text("DetectionStatus")),
+                            DataColumn(label: Text("SubmitByAuditorID")),
+                            DataColumn(label: Text("UpdateByAuditorID")),
+                            DataColumn(label: Text("CheckInDateTime")),
+                            DataColumn(label: Text("CheckOutDateTime")),
+                            DataColumn(label: Text("UpdateDateTime")),
+                            DataColumn(label: Text("QuestionTags")),
+                            DataColumn(label: Text("ScoreTags")),
+                            DataColumn(label: Text("QuestionRef1")),
+                            DataColumn(label: Text("QuestionRef2")),
+                            DataColumn(label: Text("ShopRef1")),
+                            DataColumn(label: Text("ShopRef2")),
+                            DataColumn(label: Text("BasketRef1")),
+                            DataColumn(label: Text("BasketRef2")),
+                            DataColumn(label: Text("AIAnswer")),
+                          ],
+                          source: dts,
+                          onRowsPerPageChanged: (r) {
+                            setState(() {
+                              _rowPerPage = r!;
+                            });
+                          },
+                          rowsPerPage: _rowPerPage,
+                        ),
+                      );
+                    }
+                  },
                 ),
               ],
             ),
@@ -385,7 +424,7 @@ class DTS extends DataTableSource {
 
   @override
   DataRow? getRow(int index) {
-    // // ตรวจสอบว่ามีข้อมูลในรายการ reports หรือไม่
+     // ตรวจสอบว่ามีข้อมูลในรายการ reports หรือไม่
     // if (index >= reports.length) return null;
     final Report = reports[index];
     return DataRow(
@@ -407,7 +446,7 @@ class DTS extends DataTableSource {
         DataCell(Text(Report.Topic?? '')),
         DataCell(Text(Report.Title?? '')),
         DataCell(Text(Report.Module?? '')),
-        DataCell(Text(Report.Score.toString())),
+        DataCell(Text(Report.Score != null ? Report.Score.toString() : '')),
         DataCell(Text(Report.OverallImageUrl?? '')),
         DataCell(Text(Report.FinalAnswer?? '')),
         DataCell(Text(Report.AutoAnswer?? '')),
