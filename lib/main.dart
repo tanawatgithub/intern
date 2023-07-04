@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       designSize: Size(1440 , 1080), // Design size used for scaling
       builder: (context, _) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        scrollBehavior: MyCustomScrollBehavior(),
+        //scrollBehavior: MyCustomScrollBehavior(),
         title: 'Intern',
         theme: ThemeData(
           textTheme: TextTheme(

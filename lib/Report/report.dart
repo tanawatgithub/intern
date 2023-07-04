@@ -29,12 +29,13 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
 class _ReportPageState extends State<ReportPage> {
   List<Report> reports = [];
   bool isExpanded = false;
-  String? selectedFilter;
+  String? selectedFilter1 = 'ALL';
+  String? selectedFilter2;
+  List<String> filter2Data = [];
   DTS dts = DTS();
   int _rowPerPage = PaginatedDataTable.defaultRowsPerPage;
 
   final _horizontalScrollController = ScrollController();
-
   final ReportService reportService = ReportService();
 
   @override
@@ -44,9 +45,19 @@ class _ReportPageState extends State<ReportPage> {
   }
 
   void reportf() async {
-     final reports = await ReportService().getReport();
-     dts.updateReports((reports));
+    final reports = await ReportService().getReport();
+    dts.updateReports((reports));
   }
+
+  // void filtterByFilter1(String AuditID) async{
+  //   setState(() {
+  //     if (AuditID == "ALL"){
+  //       reportf();
+  //     }else{
+  //       reports = reports.where((Report) => Report.AuditID == AuditID).toList();
+  //     }
+  //   });
+  // }
 
 
 
@@ -227,65 +238,40 @@ class _ReportPageState extends State<ReportPage> {
                 //------------------------------------------------------------------------------------------------------//
 
                 SizedBox(
-                  height: 30.0,
+                  height: 20.0,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      DropdownButton(
-                        hint: const Text("Filter1"),
-                        value: selectedFilter,
-                        items: const [
-                          DropdownMenuItem(
-                            value: "ALL",
-                            child: Text("ALL"),
-                          ),
-                          DropdownMenuItem(
-                            value: "AuditID",
-                            child: Text("AuditID"),
-                          ),
-                          DropdownMenuItem(
-                            value: "ShopID",
-                            child: Text("ShopID"),
-                          ),
-                          DropdownMenuItem(
-                            value: "ShopSegment",
-                            child: Text("ShopSegment"),
-                          ),
-                          DropdownMenuItem(
-                            value: "Region",
-                            child: Text("Region"),
-                          ),
-                          DropdownMenuItem(
-                            value: "Province",
-                            child: Text("Province"),
-                          ),
-                        ],
-                        onChanged: (value) {
-                          setState(() {
-                            selectedFilter = value as String?;
-                          });
-                        },
-                      ),
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      DropdownButton(
-                          hint: const Text("Filter2"),
+                      Flexible(
+                        child: DropdownButtonFormField<String>(
+                          value: selectedFilter1 ?? '',
+                          hint: const Text("Filter 1"),
+                          iconSize: 5.0,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedFilter1 = value!;
+                              filter2Data = getDataForFilter2(selectedFilter1!);
+                            });
+                          },
                           items: const [
+                            DropdownMenuItem<String>(
+                              value: "ALL",
+                              child: Text("ALL"),
+                            ),
                             DropdownMenuItem(
                               value: "AuditID",
                               child: Text("AuditID"),
                             ),
                             DropdownMenuItem(
-                              value: "ShopID",
-                              child: Text("ShopID"),
+                              value: "ShopName",
+                              child: Text("ShopName"),
                             ),
                             DropdownMenuItem(
-                              value: "ShopSegment",
-                              child: Text("ShopSegment"),
+                              value: "ShopType",
+                              child: Text("ShopType"),
                             ),
                             DropdownMenuItem(
                               value: "Region",
@@ -295,40 +281,47 @@ class _ReportPageState extends State<ReportPage> {
                               value: "Province",
                               child: Text("Province"),
                             ),
+                            DropdownMenuItem(
+                              value: "Dc_Name",
+                              child: Text("Dc_Name"),
+                            ),
+                            DropdownMenuItem(
+                              value: "Dc_ID",
+                              child: Text("Dc_ID"),
+                            ),
                           ],
-                          onChanged: (value) {}),
+                        ),
+                      ),
+                      Flexible(
+                        child: DropdownButton<String>(
+                          value: null,
+                          hint: Text('Select Filter 2'),
+                          iconSize: 15.0,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedFilter2 = value!;
+                            });
+                          },
+                          items: filter2Data.map((value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
                     ],
                   ),
                 ),
 
-                // const SizedBox(
-                //   height: 10.0,
-                // ),
-                // Now Let's add the table
                 FutureBuilder(
                   future: reportService.getReport(),
                   builder: (context,snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Container(
-                        width: 20,
-                        height: 300,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: const [
-                            BoxShadow(
-                            color: Colors.black26,
-                              blurRadius: 10,
-                            offset: Offset(0, 10),
-                          ),
-                          ]
-                        ),
-                        child: Center(
-                          child: SpinKitDualRing(
-                            color: Colors.orange,
-                            size: 60.0,
-                          ),
+                      return Center(
+                        child: SpinKitDualRing(
+                          color: Colors.orange,
+                          size: 60.0,
                         ),
                       );
                     } else if (snapshot.hasError) {
@@ -421,10 +414,9 @@ class DTS extends DataTableSource {
     notifyListeners();
   }
 
-
   @override
   DataRow? getRow(int index) {
-     // ตรวจสอบว่ามีข้อมูลในรายการ reports หรือไม่
+    // ตรวจสอบว่ามีข้อมูลในรายการ reports หรือไม่
     // if (index >= reports.length) return null;
     final Report = reports[index];
     return DataRow(
@@ -486,5 +478,38 @@ class DTS extends DataTableSource {
 
   @override
   int get selectedRowCount => 0;
-}////
+}
+
+// ฟังก์ชันเพื่อรับข้อมูลใน filter2 ตาม filter1
+List<String> getDataForFilter2(String filter1) {
+  // ตัวอย่างการกรองข้อมูลจากเงื่อนไขของ filter1
+  if (filter1 == 'ALL') {
+    return [];
+  }
+  else if (filter1 == 'AuditID') {
+    return ['W', 'X', 'Y'];
+  }
+  else if (filter1 == 'ShopName') {
+    return ['A', 'B', 'C'];
+  }
+  else if (filter1 == 'ShopType') {
+    return ['A', 'B', 'C'];
+  }
+  else if (filter1 == 'Region') {
+    return ['A', 'B', 'C'];
+  }
+  else if (filter1 == 'Province') {
+    return ['A', 'B', 'C'];
+  }
+  else if (filter1 == 'Dc_Name') {
+    return ['A', 'B', 'C'];
+  }
+  else if (filter1 == 'Dc_ID') {
+    return ['A', 'B', 'C'];
+  }
+  else {
+    return [];
+  }
+}
+
 

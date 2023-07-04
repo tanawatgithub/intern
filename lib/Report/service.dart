@@ -6,7 +6,7 @@ import 'dart:developer';
 
 class ReportService{
   Future<List<Report>> getReport() async{
-    String url = "http://192.168.86.29:8083/training-ws/test/getAuditResult/UNI";
+    String url = "https://64a26cf4b45881cc0ae51d90.mockapi.io/auditindex";
     final queryParameters ={
       'org' : "",
     };
