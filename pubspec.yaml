@@ -48,6 +48,7 @@ dependencies:
   flutter_multiselect: ^1.0.0
   flutter_typeahead: ^4.6.2
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
