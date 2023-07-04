@@ -246,10 +246,10 @@ class _ReportPageState extends State<ReportPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Flexible(
-                        child: DropdownButtonFormField<String>(
+                        child: DropdownButton<String>(
                           value: selectedFilter1 ?? '',
                           hint: const Text("Filter 1"),
-                          iconSize: 5.0,
+                          iconSize: 15.0,
                           onChanged: (value) {
                             setState(() {
                               selectedFilter1 = value!;
@@ -292,6 +292,7 @@ class _ReportPageState extends State<ReportPage> {
                           ],
                         ),
                       ),
+                      const SizedBox(width: 8.0),
                       Flexible(
                         child: DropdownButton<String>(
                           value: null,
