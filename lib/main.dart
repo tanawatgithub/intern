@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
+import 'Cycle/cycle.dart';
 import 'Report/report.dart';
 import 'Test/datarow.dart';
 main() {
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         //home: cyclePage('admin','1234','ZEEN'),
         //home: LoginPage(),
         //home: forpassword(),
-        home: ReportPage('admin','ZEEN'),
+        home: ReportPage('admin','ZEEN'),//
       ),
     );
   }
